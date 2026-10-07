@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HongAnh Homepage - 🌸 파스텔 연보라 아케이드 & 음악 포털</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Pretendard:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pastel-purple: #b79ced;
+            --pastel-purple-light: #e4d8fb;
+            --pastel-purple-dark: #8c6ad6;
+            --pastel-pink: #ffb7c5;
+            --pastel-yellow: #fff3b0;
+            --pastel-mint: #baffc9;
+            --bg-light: #f9f7fc;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-main: #332b47;
+            --text-muted: #6b6280;
+            --white: #ffffff;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        body, html {
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-light);
+            font-family: 'Pretendard', 'Quicksand', sans-serif;
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Floating Flower Background Decorations */
+        .flower-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+            opacity: 0.25;
+        }
+        .floating-flower {
+            position: absolute;
+            font-size: 24px;
+            animation: floatSlow 12s infinite ease-in-out;
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(183, 156, 237, 0.2);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+        }
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 900;
+            background: linear-gradient(45deg, #8c6ad6, #ff70a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s, transform 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--pastel-purple-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            position: relative;
+            z-index: 2;
+            background: radial-gradient(circle at center, rgba(183, 156, 237, 0.25) 0%, rgba(249, 247, 252, 1) 75%);
+            padding: 160px 20px 80px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(183, 156, 237, 0.15);
+        }
+        .hero-title {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #8c6ad6, #e056fd, #ff70a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 20px rgba(183, 156, 237, 0.3);
+        }
+        .hero-subtitle {
+            font-size: 17px;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .portal-container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 90px;
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-title {
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .purple-gradient-text {
+            background: linear-gradient(135deg, #8c6ad6, #ff70a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-subtitle {
+            font-size: 15px;
+            color: var(--text-muted);
+            letter-spacing: 0.3px;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            width: 100%;
+        }
+
+        /* Card Common */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(183, 156, 237, 0.3);
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(183, 156, 237, 0.1);
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--pastel-purple-dark);
+            box-shadow: 0 20px 40px rgba(140, 106, 214, 0.2);
+            background: #ffffff;
+        }
+
+        /* Arcade Card specific */
+        .arcade-card {
+            padding: 30px;
+        }
+        .arcade-card .card-top {
+            width: 100%;
+            margin-bottom: 25px;
+        }
+        .game-icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+            display: inline-block;
+            filter: drop-shadow(0 4px 8px rgba(183, 156, 237, 0.3));
+        }
+        .game-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+        .game-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .play-btn {
+            align-self: flex-start;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(135deg, #b79ced, #8c6ad6);
+            border: none;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(140, 106, 214, 0.3);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .arcade-card:hover .play-btn {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #8c6ad6, #ff70a6);
+            box-shadow: 0 6px 20px rgba(255, 112, 166, 0.4);
+        }
+
+        /* Travel Card specific */
+        .travel-card .card-img {
+            height: 180px;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+        }
+        .travel-card .card-content {
+            padding: 20px;
+        }
+        .travel-card .card-content h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.25em;
+            color: var(--text-main);
+        }
+        .travel-card .card-content p {
+            margin: 0;
+            font-size: 0.95em;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Music Card specific */
+        .music-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(183, 156, 237, 0.4);
+        }
+        .music-card .card-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .music-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 40%, rgba(51, 43, 71, 0.75));
+            display: flex;
+            align-items: flex-end;
+            padding: 15px;
+        }
+        .music-badge {
+            background: rgba(140, 106, 214, 0.9);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .music-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .music-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+        .music-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .music-player-box {
+            background: rgba(244, 240, 252, 0.8);
+            padding: 12px;
+            border-radius: 14px;
+            border: 1px solid rgba(183, 156, 237, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .music-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--pastel-purple-dark);
+            font-weight: 700;
+        }
+        .audio-player {
+            width: 100%;
+            height: 35px;
+            accent-color: var(--pastel-purple-dark);
+        }
+        .suno-btn {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #b79ced, #ffb7c5);
+            color: #332b47;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(183, 156, 237, 0.3);
+        }
+        .suno-btn:hover {
+            transform: scale(1.03);
+            background: linear-gradient(135deg, #8c6ad6, #ff70a6);
+            color: white;
+            box-shadow: 0 6px 16px rgba(140, 106, 214, 0.4);
+        }
+
+        /* Interactive Game Modal Window */
+        .game-modal-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(51, 43, 71, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .game-modal {
+            background: #ffffff;
+            border: 2px solid var(--pastel-purple);
+            box-shadow: 0 20px 50px rgba(140, 106, 214, 0.25);
+            border-radius: 28px;
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            text-align: center;
+        }
+        .game-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(183, 156, 237, 0.2);
+            padding-bottom: 15px;
+        }
+        .game-modal-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+        .close-modal-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .close-modal-btn:hover {
+            color: var(--pastel-purple-dark);
+        }
+        .game-screen {
+            background: #f9f7fc;
+            border: 1px solid rgba(183, 156, 237, 0.3);
+            border-radius: 18px;
+            padding: 20px;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+        .game-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .game-action-btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 14px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            color: #fff;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #b79ced, #8c6ad6);
+            box-shadow: 0 4px 15px rgba(140, 106, 214, 0.3);
+        }
+        .btn-secondary {
+            background: linear-gradient(135deg, #ffb7c5, #ff70a6);
+            box-shadow: 0 4px 15px rgba(255, 112, 166, 0.3);
+        }
+        .game-action-btn:hover {
+            transform: translateY(-2px);
+        }
+        .game-score-display {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--pastel-purple-dark);
+        }
+        .game-input {
+            padding: 10px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(183, 156, 237, 0.5);
+            background: #ffffff;
+            color: var(--text-main);
+            font-size: 16px;
+            text-align: center;
+            width: 150px;
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #f2eef9;
+            color: var(--text-muted);
+            font-size: 13px;
+            border-top: 1px solid rgba(183, 156, 237, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav { padding: 12px 20px; }
+            .hero-banner { padding: 130px 15px 60px 15px; }
+            .hero-title { font-size: 34px; }
+            .portal-container { padding: 40px 15px; gap: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Cute Flower Background Decor -->
+    <div class="flower-bg">
+        <span class="floating-flower" style="top: 10%; left: 5%;">🌸</span>
+        <span class="floating-flower" style="top: 25%; left: 85%;">🌼</span>
+        <span class="floating-flower" style="top: 45%; left: 12%;">🌷</span>
+        <span class="floating-flower" style="top: 65%; left: 90%;">🌸</span>
+        <span class="floating-flower" style="top: 85%; left: 8%;">💮</span>
+        <span class="floating-flower" style="top: 92%; left: 80%;">🌼</span>
+    </div>
+
+    <nav>
+        <a href="#" class="nav-logo">🌸 HongAnh Homepage</a>
+        <ul class="nav-links">
+            <li><a href="#music">음악 트랙 & Suno</a></li>
+            <li><a href="#arcade">Game 아케이드</a></li>
+            <li><a href="#travel-seoul">서울 여행지 BEST 10</a></li>
+            <li><a href="#travel-food">한국 음식 BEST 10</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero-banner">
+        <h1 class="hero-title" style="color: #ffffff;">HongAnh Homepage</h1>
+        <p class="hero-subtitle">🌸 따스한 파스텔 연보라 감성 속에서 즐기는 Suno AI 음악 스트리밍, 미니 게임 아케이드, 그리고 알찬 한국 여행 & 미식 가이드입니다.</p>
+    </header>
+
+    <div class="portal-container">
+        
+        <!-- Section 0: Music Tracks & Suno Featured Tracks -->
+        <section id="music">
+            <div class="section-header">
+                <h2 class="section-title purple-gradient-text">🎵 HONGANH MUSIC TRACKS & SUNO AI</h2>
+                <p class="section-subtitle">Suno AI 공식 스트리밍 및 따스한 감성을 담은 피아노, 로파이, 국악 트랙</p>
+            </div>
+            <div class="grid">
+                <!-- Suno Track 1 -->
+                <div class="card music-card" style="--theme-color: #ff70a6;">
+                    <div class="card-img" style="background: linear-gradient(135deg, #b79ced, #ff70a6); display: flex; align-items: center; justify-content: center; position: relative;">
+                        <span style="font-size: 64px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));">🎧</span>
+                        <div class="music-overlay">
+                            <span class="music-badge" style="background: rgba(140, 106, 214, 0.9);">Suno Track 01</span>
+                        </div>
+                    </div>
+                    <div class="music-content">
+                        <h3 class="music-title">HongAnh Suno Masterpiece #1</h3>
+                        <p class="music-desc">첫 번째 Suno AI 공식 사운드트랙입니다. 링크를 통해 오리지널 곡을 감상하세요!</p>
+                        <div class="music-player-box">
+                            <div class="music-info">
+                                <span>Suno Track Link</span>
+                                <span>Streaming</span>
+                            </div>
+                            <a href="https://suno.com/s/DQh4PKXac2WiP9Mg" target="_blank" class="suno-btn">Suno에서 듣기 (1) ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Suno Track 2 -->
+                <div class="card music-card" style="--theme-color: #8c6ad6;">
+                    <div class="card-img" style="background: linear-gradient(135deg, #b79ced, #8c6ad6); display: flex; align-items: center; justify-content: center; position: relative;">
+                        <span style="font-size: 64px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));">🎸</span>
+                        <div class="music-overlay">
+                            <span class="music-badge" style="background: rgba(140, 106, 214, 0.9);">Suno Track 02</span>
+                        </div>
+                    </div>
+                    <div class="music-content">
+                        <h3 class="music-title">HongAnh Suno Masterpiece #2</h3>
+                        <p class="music-desc">두 번째 Suno AI 공식 사운드트랙입니다. 멋진 멜로디와 사운드를 감상해보세요!</p>
+                        <div class="music-player-box">
+                            <div class="music-info">
+                                <span>Suno Track Link</span>
+                                <span>Streaming</span>
+                            </div>
+                            <a href="https://suno.com/s/iOlJA1BIPYMds2s7" target="_blank" class="suno-btn">Suno에서 듣기 (2) ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Suno Track 3 -->
+                <div class="card music-card" style="--theme-color: #ffb7c5;">
+                    <div class="card-img" style="background: linear-gradient(135deg, #ffb7c5, #e056fd); display: flex; align-items: center; justify-content: center; position: relative;">
+                        <span style="font-size: 64px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));">🔥</span>
+                        <div class="music-overlay">
+                            <span class="music-badge" style="background: rgba(224, 86, 253, 0.9);">Suno Track 03</span>
+                        </div>
+                    </div>
+                    <div class="music-content">
+                        <h3 class="music-title">HongAnh Suno Masterpiece #3</h3>
+                        <p class="music-desc">새롭게 추가된 세 번째 Suno AI 최신 사운드트랙입니다. 지금 바로 플레이하세요!</p>
+                        <div class="music-player-box">
+                            <div class="music-info">
+                                <span>Suno Track Link</span>
+                                <span>Streaming</span>
+                            </div>
+                            <a href="https://suno.com/s/FIIixVJ2sP3AsEB7" target="_blank" class="suno-btn">Suno에서 듣기 (3) ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Track 1: 머그컵을 두고 -->
+                <div class="card music-card">
+                    <div class="card-img" style="background-image: url('mug_cup.jpeg');">
+                        <div class="music-overlay">
+                            <span class="music-badge">Track 01</span>
+                        </div>
+                    </div>
+                    <div class="music-content">
+                        <h3 class="music-title">머그컵을 두고</h3>
+                        <p class="music-desc">창가에 내리는 빗소리와 따뜻한 머그컵 한 잔의 여유를 담은 감성적인 로파이 멜로디.</p>
+                        <div class="music-player-box">
+                            <div class="music-info">
+                                <span>Now Playing / Preview</span>
+                                <span>3:24</span>
+                            </div>
+                            <audio class="audio-player" controls preload="none">
+                                <source src="#" type="audio/mpeg">
+                                브라우저가 오디오 재생을 지원하지 않습니다.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Track 2: 갓을 쓰고 걷는 발걸음 -->
+                <div class="card music-card">
+                    <div class="card-img" style="background-image: url('gat_walk.jpeg');">
+                        <div class="music-overlay">
+                            <span class="music-badge">Track 02</span>
+                        </div>
+                    </div>
+                    <div class="music-content">
+                        <h3 class="music-title">갓을 쓰고 걷는 발걸음</h3>
+                        <p class="music-desc">전통의 멋과 현대적 사운드가 어우러져 고즈넉한 길을 걷는 듯한 몽환적인 퓨전 국악 트랙.</p>
+                        <div class="music-player-box">
+                            <div class="music-info">
+                                <span>Now Playing / Preview</span>
+                                <span>2:58</span>
+                            </div>
+                            <audio class="audio-player" controls preload="none">
+                                <source src="#" type="audio/mpeg">
+                                브라우저가 오디오 재생을 지원하지 않습니다.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Track 3: 잔잔한 피아노 -->
+                <div class="card music-card">
+                    <div class="card-img" style="background-image: url('gentle_piano.jpeg');">
+                        <div class="music-overlay">
+                            <span class="music-badge">Track 03</span>
+                        </div>
+                    </div>
+                    <div class="music-content">
+                        <h3 class="music-title">잔잔한 피아노</h3>
+                        <p class="music-desc">마음을 차분하게 가라앉혀주는 따스하고 서정적인 피아노 연주곡.</p>
+                        <div class="music-player-box">
+                            <div class="music-info">
+                                <span>Now Playing / Preview</span>
+                                <span>4:12</span>
+                            </div>
+                            <audio class="audio-player" controls preload="none">
+                                <source src="#" type="audio/mpeg">
+                                브라우저가 오디오 재생을 지원하지 않습니다.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Mini Game Arcade (Interactive) -->
+        <section id="arcade">
+            <div class="section-header">
+                <h2 class="section-title purple-gradient-text">🌸 GAME ARCADE (미니 게임 아케이드)</h2>
+                <p class="section-subtitle">클릭하여 웹사이트 내에서 바로 게임을 즐기고 점수를 기록하세요!</p>
+            </div>
+            <div class="grid">
+                <!-- 1 -->
+                <div class="card arcade-card">
+                    <div class="card-top">
+                        <span class="game-icon">🎲</span>
+                        <h3 class="game-title">Number Guessing</h3>
+                        <p class="game-desc">1~100 사이의 숨겨진 숫자를 맞춰보세요! 최소 시도로 정답을 찾는 두뇌 추리 게임입니다.</p>
+                    </div>
+                    <button class="play-btn" onclick="openGame('number')">PLAY NOW</button>
+                </div>
+                <!-- 2 -->
+                <div class="card arcade-card">
+                    <div class="card-top">
+                        <span class="game-icon">❌</span>
+                        <h3 class="game-title">Tic Tac Toe</h3>
+                        <p class="game-desc">컴퓨터 또는 친구와 즐기는 3목 승부! 격자에 먼저 3개를 완성해 승리를 쟁취하세요.</p>
+                    </div>
+                    <button class="play-btn" onclick="openGame('tictactoe')">PLAY NOW</button>
+                </div>
+                <!-- 3 -->
+                <div class="card arcade-card">
+                    <div class="card-top">
+                        <span class="game-icon">✊</span>
+                        <h3 class="game-title">Rock Paper Scissors</h3>
+                        <p class="game-desc">가위바위보 연승에 도전하세요! 컴퓨터를 상대로 최고 연승 점수를 경신합니다.</p>
+                    </div>
+                    <button class="play-btn" onclick="openGame('rps')">PLAY NOW</button>
+                </div>
+                <!-- 4 -->
+                <div class="card arcade-card">
+                    <div class="card-top">
+                        <span class="game-icon">🎯</span>
+                        <h3 class="game-title">Click Target Game</h3>
+                        <p class="game-desc">나타나는 타겟을 제한 시간 내에 가장 많이 클릭하여 반사 신경과 점수를 테스트하세요!</p>
+                    </div>
+                    <button class="play-btn" onclick="openGame('target')">PLAY NOW</button>
+                </div>
+                <!-- 5 -->
+                <div class="card arcade-card">
+                    <div class="card-top">
+                        <span class="game-icon">🃏</span>
+                        <h3 class="game-title">Memory Match</h3>
+                        <p class="game-desc">동일한 카드 짝을 빠르게 찾아 매칭하여 순간 기억력과 최고 기록에 도전하세요.</p>
+                    </div>
+                    <button class="play-btn" onclick="openGame('memory')">PLAY NOW</button>
+                </div>
+                <!-- 6 -->
+                <div class="card arcade-card">
+                    <div class="card-top">
+                        <span class="game-icon">⚡</span>
+                        <h3 class="game-title">Reaction Test</h3>
+                        <p class="game-desc">신호가 연보라빛으로 바뀌는 찰나의 순간을 클릭하여 밀리초(ms) 반응 속도를 측정합니다.</p>
+                    </div>
+                    <button class="play-btn" onclick="openGame('reaction')">PLAY NOW</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Seoul Attractions BEST 10 -->
+        <section id="travel-seoul">
+            <div class="section-header">
+                <h2 class="section-title purple-gradient-text">🏛️ 서울 여행지 BEST 10</h2>
+                <p class="section-subtitle">서울의 매력적인 명소 10곳을 소개합니다.</p>
+            </div>
+            <div class="grid">
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>1. 경복궁</h3>
+                        <p>조선 시대의 정궁으로 웅장한 건축미와 수문장 교대식을 볼 수 있는 곳.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>2. N서울타워</h3>
+                        <p>남산 서울타워에서 내려다보는 서울의 환상적인 야경.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1517840905430-5eba7f7c13da?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>3. 북촌 한옥마을</h3>
+                        <p>전통 한옥들이 아름답게 보존되어 있는 도심 속 역사 거리.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1546874177-dd2660c6d37a?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>4. 명동</h3>
+                        <p>쇼핑과 다양한 길거리 음식을 즐길 수 있는 번화가.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>5. 홍대</h3>
+                        <p>인디 음악, 젊음의 거리, 독특한 카페와 버스킹이 넘치는 곳.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>6. 동대문 디자인 플라자 (DDP)</h3>
+                        <p>자하 하디드가 설계한 미래지향적 건축물과 트렌디한 전시 공간.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>7. 한강공원</h3>
+                        <p>서울 시민들의 쉼터이자 치킨과 라면을 즐기며 야경을 감상하는 명소.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>8. 광장시장</h3>
+                        <p>빈대떡, 마약김밥 등 전통 시장의 활기찬 먹거리가 가득한 곳.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>9. 롯데월드 타워 & 석촌호수</h3>
+                        <p>서울에서 가장 높은 전망대와 아름다운 호수 산책로.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1609137144881-540b59ac2940?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>10. 인사동</h3>
+                        <p>전통 공예품, 갤러리, 전통찻집이 모여 있는 문화의 거리.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Korean Food BEST 10 -->
+        <section id="travel-food">
+            <div class="section-header">
+                <h2 class="section-title purple-gradient-text">🍲 한국 음식 BEST 10</h2>
+                <p class="section-subtitle">꼭 맛봐야 할 한국 음식 10가지를 소개합니다.</p>
+            </div>
+            <div class="grid">
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1553163147-622ab57be1c9?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>1. 비빔밥</h3>
+                        <p>각종 나물과 고기, 고추장을 쓱쓱 비벼 먹는 대표 한식.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>2. 불고기</h3>
+                        <p>얇게 썬 소고기를 양념에 재워 구워 먹는 달콤 짭조름한 요리.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>3. 치맥 (치킨 & 맥주)</h3>
+                        <p>바삭한 치킨과 시원한 맥주의 환상적인 조합.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>4. 떡볶이</h3>
+                        <p>매콤달콤한 소스에 쫄깃한 떡과 어묵이 들어간 국민 간식.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>5. 삼겹살</h3>
+                        <p>두툼한 돼지고기 삼겹살을 불판에 구워 쌈에 싸 먹는 요리.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>6. 김치찌개</h3>
+                        <p>잘 익은 김치와 돼지고기를 넣고 얼큰하게 끓여낸 찌개.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>7. 냉면</h3>
+                        <p>시원하고 깔끔한 육수에 쫄깃한 면발이 일품인 여름철 별미.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>8. 설렁탕</h3>
+                        <p>사골을 오랜 시간 푹 끓여내 진하고 담백한 국물 요리.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>9. 잡채</h3>
+                        <p>당면과 다양한 채소를 간장 양념에 볶아낸 잔치 음식.</p>
+                    </div>
+                </div>
+                <div class="card travel-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="card-content">
+                        <h3>10. 호떡</h3>
+                        <p>쫄깃한 반죽 속에 설탕과 견과류를 넣고 기름에 구워낸 달콤한 길거리 간식.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Interactive Game Modal Window -->
+    <div id="gameModalBackdrop" class="game-modal-backdrop">
+        <div class="game-modal">
+            <div class="game-modal-header">
+                <h3 id="modalGameTitle" class="game-modal-title">Mini Game</h3>
+                <button class="close-modal-btn" onclick="closeGame()">&times;</button>
+            </div>
+            <div id="modalGameContent" class="game-screen">
+                <!-- Dynamic game UI loaded here -->
+            </div>
+            <div class="game-controls">
+                <button class="game-action-btn btn-secondary" onclick="closeGame()">나가기</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 HongAnh Homepage. All Rights Reserved. 🌸</p>
+    </footer>
+
+    <script>
+        let currentGame = null;
+        let gameState = {};
+
+        function openGame(gameType) {
+            currentGame = gameType;
+            document.getElementById('gameModalBackdrop').style.display = 'flex';
+            initGame(gameType);
+        }
+
+        function closeGame() {
+            document.getElementById('gameModalBackdrop').style.display = 'none';
+            currentGame = null;
+        }
+
+        function initGame(type) {
+            const titleEl = document.getElementById('modalGameTitle');
+            const contentEl = document.getElementById('modalGameContent');
+
+            if (type === 'number') {
+                titleEl.innerText = "Number Guessing (숫자 맞추기)";
+                gameState = { target: Math.floor(Math.random() * 100) + 1, attempts: 0 };
+                contentEl.innerHTML = `
+                    <div class="game-score-display">시도 횟수: <span id="numAttempts">0</span></div>
+                    <p style="color: var(--text-muted); font-size: 14px;">1부터 100 사이의 숫자를 맞춰보세요!</p>
+                    <input type="number" id="numInput" class="game-input" min="1" max="100" placeholder="숫자 입력">
+                    <div class="game-controls">
+                        <button class="game-action-btn btn-primary" onclick="guessNumber()">정답 확인</button>
+                        <button class="game-action-btn btn-secondary" onclick="initGame('number')">다시 시작</button>
+                    </div>
+                    <p id="numFeedback" style="font-size: 14px; font-weight: bold; color: var(--pastel-purple-dark);"></p>
+                `;
+            } else if (type === 'tictactoe') {
+                titleEl.innerText = "Tic Tac Toe (3목 게임)";
+                gameState = { board: Array(9).fill(''), turn: 'X', gameOver: false };
+                let gridHtml = '<div style="display: grid; grid-template-columns: repeat(3, 60px); gap: 6px; justify-content: center;">';
+                for (let i = 0; i < 9; i++) {
+                    gridHtml += `<button onclick="playTicTacToe(${i})" id="cell-${i}" style="width: 60px; height: 60px; font-size: 24px; font-weight: bold; background: #ffffff; border: 1px solid rgba(183, 156, 237, 0.4); color: var(--text-main); border-radius: 12px; cursor: pointer;"></button>`;
+                }
+                gridHtml += '</div>';
+                contentEl.innerHTML = `
+                    <div class="game-score-display">현재 차례: <span id="tttTurn">X</span></div>
+                    ${gridHtml}
+                    <div class="game-controls" style="margin-top: 10px;">
+                        <button class="game-action-btn btn-secondary" onclick="initGame('tictactoe')">다시 시작</button>
+                    </div>
+                    <p id="tttFeedback" style="font-size: 14px; font-weight: bold; color: #ff70a6;"></p>
+                `;
+            } else if (type === 'rps') {
+                titleEl.innerText = "Rock Paper Scissors (가위바위보)";
+                gameState = { wins: 0, streak: 0 };
+                contentEl.innerHTML = `
+                    <div class="game-score-display">연승 기록: <span id="rpsStreak">0</span> (총 승리: <span id="rpsWins">0</span>)</div>
+                    <p style="color: var(--text-muted); font-size: 14px;">가위, 바위, 보 중 하나를 선택하세요!</p>
+                    <div class="game-controls">
+                        <button class="game-action-btn btn-primary" onclick="playRPS('가위')">✌️ 가위</button>
+                        <button class="game-action-btn btn-primary" onclick="playRPS('바위')">✊ 바위</button>
+                        <button class="game-action-btn btn-primary" onclick="playRPS('보')">🖐️ 보</button>
+                    </div>
+                    <p id="rpsResult" style="font-size: 15px; font-weight: bold; color: var(--pastel-purple-dark); min-height: 24px;"></p>
+                    <div class="game-controls">
+                        <button class="game-action-btn btn-secondary" onclick="initGame('rps')">초기화</button>
+                    </div>
+                `;
+            } else if (type === 'target') {
+                titleEl.innerText = "Click Target (클릭 스피드 게임)";
+                gameState = { score: 0, timeLeft: 10, playing: false, timer: null };
+                contentEl.innerHTML = `
+                    <div class="game-score-display">점수: <span id="targetScore">0</span> | 남은 시간: <span id="targetTime">10</span>초</div>
+                    <div id="targetArea" style="width: 100%; height: 120px; background: #ffffff; border: 1px solid rgba(183, 156, 237, 0.3); border-radius: 14px; position: relative; overflow: hidden; cursor: crosshair;">
+                        <div id="clickTarget" onclick="hitTarget()" style="display: none; position: absolute; width: 40px; height: 40px; background: #ff70a6; border-radius: 50%; cursor: pointer; box-shadow: 0 0 12px rgba(255, 112, 166, 0.6);"></div>
+                    </div>
+                    <div class="game-controls">
+                        <button class="game-action-btn btn-primary" id="targetStartBtn" onclick="startTargetGame()">게임 시작</button>
+                        <button class="game-action-btn btn-secondary" onclick="initGame('target')">다시 시작</button>
+                    </div>
+                `;
+            } else if (type === 'memory') {
+                titleEl.innerText = "Memory Match (카드 기억 매칭)";
+                gameState = { cards: ['🌸','🌸','🌼','🌼','🌷','🌷','💮','💮'].sort(() => Math.random() - 0.5), flipped: [], matched: 0 };
+                let memHtml = '<div style="display: grid; grid-template-columns: repeat(4, 55px); gap: 8px; justify-content: center;">';
+                for (let i = 0; i < 8; i++) {
+                    memHtml += `<button onclick="flipMemoryCard(${i})" id="mem-${i}" style="width: 55px; height: 55px; font-size: 22px; background: #ffffff; border: 1px solid rgba(183, 156, 237, 0.4); border-radius: 12px; cursor: pointer;">❓</button>`;
+                }
+                memHtml += '</div>';
+                contentEl.innerHTML = `
+                    <div class="game-score-display">매칭 성공: <span id="memScore">0</span> / 4</div>
+                    ${memHtml}
+                    <div class="game-controls" style="margin-top: 10px;">
+                        <button class="game-action-btn btn-secondary" onclick="initGame('memory')">다시 시작</button>
+                    </div>
+                `;
+            } else if (type === 'reaction') {
+                titleEl.innerText = "Reaction Test (반응 속도 테스트)";
+                gameState = { startTime: 0, status: 'waiting', timeout: null };
+                contentEl.innerHTML = `
+                    <div id="reactionBox" onclick="reactionClick()" style="width: 100%; height: 130px; background: #b79ced; border-radius: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-weight: bold; font-size: 16px; color: #fff; box-shadow: 0 4px 15px rgba(183, 156, 237, 0.4);">
+                        클릭해서 시작하기
+                    </div>
+                    <p id="reactionResult" style="font-size: 15px; font-weight: bold; color: var(--pastel-purple-dark); min-height: 24px;"></p>
+                    <div class="game-controls">
+                        <button class="game-action-btn btn-secondary" onclick="initGame('reaction')">다시 시작</button>
+                    </div>
+                `;
+            }
+        }
+
+        // Game 1 logic
+        function guessNumber() {
+            const val = parseInt(document.getElementById('numInput').value);
+            const feedback = document.getElementById('numFeedback');
+            if (isNaN(val)) {
+                feedback.innerText = "올바른 숫자를 입력하세요!";
+                return;
+            }
+            gameState.attempts++;
+            document.getElementById('numAttempts').innerText = gameState.attempts;
+            if (val === gameState.target) {
+                feedback.innerText = `🎉 정답입니다! (${gameState.attempts}회 만에 성공)`;
+                feedback.style.color = "#ff70a6";
+            } else if (val < gameState.target) {
+                feedback.innerText = "📈 UP! 더 큰 숫자입니다.";
+                feedback.style.color = "#8c6ad6";
+            } else {
+                feedback.innerText = "📉 DOWN! 더 작은 숫자입니다.";
+                feedback.style.color = "#ff70a6";
+            }
+        }
+
+        // Game 2 logic
+        function playTicTacToe(idx) {
+            if (gameState.gameOver || gameState.board[idx] !== '') return;
+            gameState.board[idx] = gameState.turn;
+            document.getElementById(`cell-${idx}`).innerText = gameState.turn;
+            document.getElementById(`cell-${idx}`).style.color = gameState.turn === 'X' ? '#8c6ad6' : '#ff70a6';
+
+            const winPatterns = [
+                [0,1,2],[3,4,5],[6,7,8],
+                [0,3,6],[1,4,7],[2,5,8],
+                [0,4,8],[2,4,6]
+            ];
+            let won = false;
+            for (let p of winPatterns) {
+                if (gameState.board[p[0]] && gameState.board[p[0]] === gameState.board[p[1]] && gameState.board[p[0]] === gameState.board[p[2]]) {
+                    won = true;
+                    break;
+                }
+            }
+
+            const feedback = document.getElementById('tttFeedback');
+            if (won) {
+                feedback.innerText = `🏆 플레이어 ${gameState.turn} 승리!`;
+                gameState.gameOver = true;
+                return;
+            }
+            if (!gameState.board.includes('')) {
+                feedback.innerText = "🤝 무승부입니다!";
+                gameState.gameOver = true;
+                return;
+            }
+            gameState.turn = gameState.turn === 'X' ? 'O' : 'X';
+            document.getElementById('tttTurn').innerText = gameState.turn;
+        }
+
+        // Game 3 logic
+        function playRPS(playerChoice) {
+            const choices = ['가위', '바위', '보'];
+            const computerChoice = choices[Math.floor(Math.random() * 3)];
+            const resEl = document.getElementById('rpsResult');
+            let resultText = `컴퓨터: ${computerChoice} vs 나: ${playerChoice} - `;
+
+            if (computerChoice === playerChoice) {
+                resultText += "🤝 무승부!";
+                resEl.style.color = "#8c6ad6";
+            } else if (
+                (playerChoice === '가위' && computerChoice === '보') ||
+                (playerChoice === '바위' && computerChoice === '가위') ||
+                (playerChoice === '보' && computerChoice === '바위')
+            ) {
+                resultText += "🎉 승리!";
+                gameState.wins++;
+                gameState.streak++;
+                resEl.style.color = "#ff70a6";
+            } else {
+                resultText += "😢 패배...";
+                gameState.streak = 0;
+                resEl.style.color = "#6b6280";
+            }
+            document.getElementById('rpsWins').innerText = gameState.wins;
+            document.getElementById('rpsStreak').innerText = gameState.streak;
+            resEl.innerText = resultText;
+        }
+
+        // Game 4 logic
+        function startTargetGame() {
+            if (gameState.playing) return;
+            gameState.playing = true;
+            gameState.score = 0;
+            gameState.timeLeft = 10;
+            document.getElementById('targetScore').innerText = gameState.score;
+            document.getElementById('targetTime').innerText = gameState.timeLeft;
+            document.getElementById('targetStartBtn').disabled = true;
+
+            moveTarget();
+            gameState.timer = setInterval(() => {
+                gameState.timeLeft--;
+                document.getElementById('targetTime').innerText = gameState.timeLeft;
+                if (gameState.timeLeft <= 0) {
+                    clearInterval(gameState.timer);
+                    gameState.playing = false;
+                    document.getElementById('clickTarget').style.display = 'none';
+                    document.getElementById('targetStartBtn').disabled = false;
+                    alert(`게임 종료! 최종 점수: ${gameState.score}점 🌸`);
+                }
+            }, 1000);
+        }
+
+        function moveTarget() {
+            if (!gameState.playing) return;
+            const target = document.getElementById('clickTarget');
+            const area = document.getElementById('targetArea');
+            const maxX = area.clientWidth - 40;
+            const maxY = area.clientHeight - 40;
+            target.style.left = Math.floor(Math.random() * maxX) + 'px';
+            target.style.top = Math.floor(Math.random() * maxY) + 'px';
+            target.style.display = 'block';
+        }
+
+        function hitTarget() {
+            if (!gameState.playing) return;
+            gameState.score++;
+            document.getElementById('targetScore').innerText = gameState.score;
+            moveTarget();
+        }
+
+        // Game 5 logic
+        let memState = { first: null, lock: false };
+        function flipMemoryCard(idx) {
+            if (memState.lock) return;
+            const btn = document.getElementById(`mem-${idx}`);
+            if (btn.innerText !== '❓') return;
+
+            btn.innerText = gameState.cards[idx];
+            if (memState.first === null) {
+                memState.first = idx;
+            } else {
+                const firstIdx = memState.first;
+                memState.first = null;
+                if (gameState.cards[firstIdx] === gameState.cards[idx]) {
+                    gameState.matched++;
+                    document.getElementById('memScore').innerText = gameState.matched;
+                    if (gameState.matched === 4) {
+                        setTimeout(() => alert('🏆 모든 카드를 맞췄습니다! 🌸'), 200);
+                    }
+                } else {
+                    memState.lock = true;
+                    setTimeout(() => {
+                        document.getElementById(`mem-${firstIdx}`).innerText = '❓';
+                        document.getElementById(`mem-${idx}`).innerText = '❓';
+                        memState.lock = false;
+                    }, 600);
+                }
+            }
+        }
+
+        // Game 6 logic
+        function reactionClick() {
+            const box = document.getElementById('reactionBox');
+            const res = document.getElementById('reactionResult');
+
+            if (gameState.status === 'waiting') {
+                box.style.background = '#ffb7c5';
+                box.innerText = '기다리는 중... (연보라색으로 바뀌면 클릭!)';
+                gameState.status = 'ready';
+                const waitTime = Math.floor(Math.random() * 2000) + 1500;
+                gameState.timeout = setTimeout(() => {
+                    box.style.background = '#8c6ad6';
+                    box.style.color = '#ffffff';
+                    box.innerText = '지금 클릭하세요!! 🌸';
+                    gameState.startTime = Date.now();
+                    gameState.status = 'click';
+                }, waitTime);
+            } else if (gameState.status === 'ready') {
+                clearTimeout(gameState.timeout);
+                box.style.background = '#b79ced';
+                box.style.color = '#fff';
+                box.innerText = '너무 빨리 눌렀습니다! 다시 시작';
+                res.innerText = '실패: 부정 출발';
+                gameState.status = 'waiting';
+            } else if (gameState.status === 'click') {
+                const reactionTime = Date.now() - gameState.startTime;
+                box.style.background = '#b79ced';
+                box.style.color = '#fff';
+                box.innerText = '클릭해서 시작하기';
+                res.innerText = `⚡ 반응 속도: ${reactionTime} ms`;
+                gameState.status = 'waiting';
+            }
+        }
+    </script>
+</body>
+</html>
