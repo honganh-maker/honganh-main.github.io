@@ -589,6 +589,7 @@
         .card:hover { transform: translateY(-5px); border-color: rgba(140,106,214,.52); box-shadow: 0 20px 42px rgba(91,66,145,.16); }
         .music-card { color: inherit; text-decoration: none; }
         .music-card .card-img { height: 228px; }
+        .music-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: rgba(255,255,255,.94); }
         .music-cover { display: flex; align-items: center; justify-content: center; }
         .cover-one { background: radial-gradient(circle at 25% 25%, #ffd6e3 0, transparent 32%), linear-gradient(135deg, #9270df, #f28aae); }
         .cover-two { background: radial-gradient(circle at 75% 22%, #eee0ff 0, transparent 30%), linear-gradient(135deg, #6853b8, #a88beb); }
@@ -715,15 +716,15 @@
             </div>
             <div class="grid music-grid">
                 <a class="card music-card" href="https://suno.com/s/DQh4PKXac2WiP9Mg" target="_blank" rel="noopener noreferrer" aria-label="잔잔한 피아노 재생">
-                    <div class="card-img music-cover cover-one"><span class="music-art" aria-hidden="true">🎧</span><div class="music-overlay"><span class="music-badge">ORIGINAL · 01</span></div></div>
+                    <div class="card-img music-cover cover-one"><img class="music-photo" src="assets/music-song-01.jpg" alt="별과 리본이 그려진 귀여운 토끼 그림"><div class="music-overlay"><span class="music-badge">ORIGINAL · 01</span></div></div>
                     <div class="music-content"><h3 class="music-title">잔잔한 피아노</h3><p class="music-desc">첫 번째 오리지널 사운드트랙을 감상해 보세요.</p><span class="music-player-box"><span class="play-icon" aria-hidden="true">▶</span><span>Suno에서 재생</span><span class="play-arrow" aria-hidden="true">↗</span></span></div>
                 </a>
                 <a class="card music-card" href="https://suno.com/s/iOlJA1BIPYMds2s7" target="_blank" rel="noopener noreferrer" aria-label="갓을 쓰고 걷는 발걸음 재생">
-                    <div class="card-img music-cover cover-two"><span class="music-art" aria-hidden="true">🎸</span><div class="music-overlay"><span class="music-badge">ORIGINAL · 02</span></div></div>
+                    <div class="card-img music-cover cover-two"><img class="music-photo" src="assets/music-song-02.jpg" alt="파란 옷을 입은 귀여운 토끼 그림"><div class="music-overlay"><span class="music-badge">ORIGINAL · 02</span></div></div>
                     <div class="music-content"><h3 class="music-title">갓을 쓰고 걷는 발걸음</h3><p class="music-desc">두 번째 곡의 멋진 멜로디와 사운드를 만나보세요.</p><span class="music-player-box"><span class="play-icon" aria-hidden="true">▶</span><span>Suno에서 재생</span><span class="play-arrow" aria-hidden="true">↗</span></span></div>
                 </a>
                 <a class="card music-card" href="https://suno.com/s/FIIixVJ2sP3AsEB7" target="_blank" rel="noopener noreferrer" aria-label="머그컵을 두고 재생">
-                    <div class="card-img music-cover cover-three"><span class="music-art" aria-hidden="true">✨</span><div class="music-overlay"><span class="music-badge">ORIGINAL · 03</span></div></div>
+                    <div class="card-img music-cover cover-three"><img class="music-photo" src="assets/music-song-03.jpg" alt="하늘색 귀마개와 목도리를 한 귀여운 토끼 그림"><div class="music-overlay"><span class="music-badge">ORIGINAL · 03</span></div></div>
                     <div class="music-content"><h3 class="music-title">머그컵을 두고</h3><p class="music-desc">세 번째 사운드트랙을 눌러 감상해 보세요.</p><span class="music-player-box"><span class="play-icon" aria-hidden="true">▶</span><span>Suno에서 재생</span><span class="play-arrow" aria-hidden="true">↗</span></span></div>
                 </a>
             </div>
