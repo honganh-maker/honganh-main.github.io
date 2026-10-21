@@ -540,12 +540,19 @@
         .nav-submenu button { padding: 12px 14px; border-radius: 12px; color: var(--text-main); font-size: 14px; }
         .nav-submenu button:hover, .nav-submenu button:focus-visible { color: var(--pastel-purple-dark); background: #f4efff; }
         .content-section[hidden], .guide-panel[hidden] { display: none !important; }
-        .hero-banner { isolation: isolate; width: min(1380px, calc(100% - 32px)); min-height: 350px; margin: 22px auto 0; padding: clamp(82px, 11vw, 138px) 24px 82px; overflow: hidden; border: 1px solid rgba(255,255,255,.55); border-radius: 32px; background: linear-gradient(120deg, #7151b9 0%, #9774dc 45%, #e58fb6 100%); box-shadow: 0 24px 60px rgba(96,67,148,.2); }
-        .hero-banner::before, .hero-banner::after { content: ''; position: absolute; z-index: -1; border-radius: 50%; background: rgba(255,255,255,.11); }
-        .hero-banner::before { width: 340px; height: 340px; top: -170px; right: 7%; }
-        .hero-banner::after { width: 250px; height: 250px; bottom: -160px; left: 8%; }
-        .hero-content { max-width: 820px; margin: 0 auto; }
-        .hero-kicker { margin-bottom: 14px; color: rgba(255,255,255,.8); font-size: 12px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+        .hero-banner { isolation: isolate; width: min(1380px, calc(100% - 32px)); min-height: 370px; margin: 22px auto 0; padding: clamp(82px, 11vw, 138px) 24px 82px; overflow: hidden; border: 1px solid rgba(255,255,255,.7); border-radius: 32px; background: linear-gradient(125deg, #839fdf 0%, #968fdf 48%, #bd8edc 100%); box-shadow: 0 24px 60px rgba(96,67,148,.2); }
+        .hero-banner::before, .hero-banner::after { content: ''; position: absolute; z-index: -1; border-radius: 999px; background: rgba(255,255,255,.24); }
+        .hero-banner::before { width: 180px; height: 66px; top: 48px; right: 9%; box-shadow: -38px 10px 0 -9px rgba(255,255,255,.24), 42px 11px 0 -14px rgba(255,255,255,.24); }
+        .hero-banner::after { width: 150px; height: 54px; bottom: 44px; left: 10%; box-shadow: -32px 9px 0 -8px rgba(255,255,255,.2), 35px 10px 0 -12px rgba(255,255,255,.2); }
+        .hero-content { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
+        .hero-kicker { display: inline-block; margin-bottom: 14px; padding: 7px 13px; border: 1px solid rgba(255,255,255,.24); border-radius: 999px; color: rgba(255,255,255,.94); background: rgba(255,255,255,.12); font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+        .hero-doodles { position: absolute; z-index: 0; inset: 0; overflow: hidden; pointer-events: none; }
+        .hero-doodle { position: absolute; display: inline-block; filter: drop-shadow(0 5px 8px rgba(56,39,105,.13)); animation: doodleFloat 5s ease-in-out infinite; }
+        .doodle-music { top: 38%; left: 9%; color: #ffe89d; font-size: 40px; transform: rotate(-12deg); }
+        .doodle-flower { right: 12%; bottom: 24%; font-size: 30px; animation-delay: -1.6s; }
+        .doodle-star { top: 28%; right: 20%; color: #fff1ad; font-size: 25px; animation-delay: -2.8s; }
+        .doodle-cloud { bottom: 23%; left: 20%; color: rgba(255,255,255,.8); font-size: 36px; animation-delay: -3.7s; }
+        @keyframes doodleFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
         .hero-title { margin-bottom: 14px; color: #fff; font-size: clamp(38px, 6vw, 66px); line-height: 1.04; letter-spacing: -.04em; -webkit-text-fill-color: #fff; text-shadow: 0 8px 28px rgba(45,27,84,.2); }
         .hero-subtitle { max-width: 650px; margin: 0 auto; color: rgba(255,255,255,.92); font-size: clamp(13px, 1.6vw, 16px); font-weight: 600; letter-spacing: .04em; }
         .hero-menu { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 30px auto 0; }
@@ -597,6 +604,9 @@
             .nav-button { padding: 9px 12px; font-size: 12px; }
             .nav-submenu { right: 50%; transform: translateX(50%); min-width: 225px; }
             .hero-banner { width: calc(100% - 20px); min-height: 300px; margin-top: 12px; padding: 74px 18px 62px; border-radius: 24px; }
+            .doodle-music { left: 3%; font-size: 30px; }
+            .doodle-flower { right: 4%; font-size: 24px; }
+            .doodle-star, .doodle-cloud { opacity: .45; }
             .hero-menu { gap: 8px; margin-top: 24px; }
             .hero-menu-button { min-height: 44px; padding: 9px 13px; border-radius: 15px; font-size: 12px; }
             .portal-container { padding: 36px 15px 54px; }
@@ -632,7 +642,7 @@
             <li><button id="main-menu-music" class="nav-button is-active" type="button" data-main-menu="music" aria-controls="music" aria-current="page" onclick="showSection('music')">🎵 나의 음악</button></li>
             <li><button id="main-menu-games" class="nav-button" type="button" data-main-menu="games" aria-controls="arcade" onclick="showSection('arcade')">🎮 재밌는 게임</button></li>
             <li class="nav-guide-menu">
-                <button id="main-menu-guide" class="nav-button nav-menu-toggle" type="button" data-main-menu="guide" aria-expanded="false" aria-controls="guideSubmenu" onclick="toggleGuideMenu()">🧭 여행 &amp; 음식 <span class="menu-chevron" aria-hidden="true">⌄</span></button>
+                <button id="main-menu-guide" class="nav-button nav-menu-toggle" type="button" data-main-menu="guide" aria-expanded="false" aria-controls="guideSubmenu" onclick="toggleGuideMenu()">🌷 여행 &amp; 음식 <span class="menu-chevron" aria-hidden="true">⌄</span></button>
                 <ul id="guideSubmenu" class="nav-submenu" hidden>
                     <li><button id="guide-travel" type="button" aria-controls="travel-seoul" onclick="showSection('travel-seoul')">서울 여행지 TOP 10</button></li>
                     <li><button id="guide-food" type="button" aria-controls="travel-food" onclick="showSection('travel-food')">한국 음식 TOP 10</button></li>
@@ -642,6 +652,7 @@
     </nav>
 
     <header class="hero-banner" id="top">
+        <div class="hero-doodles" aria-hidden="true"><span class="hero-doodle doodle-music">♫</span><span class="hero-doodle doodle-flower">🌼</span><span class="hero-doodle doodle-star">✦</span><span class="hero-doodle doodle-cloud">☁</span></div>
         <div class="hero-content">
             <p class="hero-kicker">A little corner made with love</p>
             <h1 class="hero-title">HongAnh Homepage</h1>
