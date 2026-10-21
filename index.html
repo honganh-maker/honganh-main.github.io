@@ -524,6 +524,92 @@
             .hero-title { font-size: 34px; }
             .portal-container { padding: 40px 15px; gap: 60px; }
         }
+        /* Homepage refresh */
+        :root { --pastel-purple: #a989e8; --pastel-purple-dark: #7651c5; --text-main: #302744; --text-muted: #716a82; --bg-light: #fbf9ff; --card-bg: rgba(255,255,255,.92); }
+        body { background: radial-gradient(ellipse at 10% 5%, #f0eaff 0, transparent 34%), radial-gradient(ellipse at 90% 20%, #fff0f5 0, transparent 30%), var(--bg-light); }
+        nav.site-nav { position: sticky; top: 0; width: 100%; min-height: 76px; margin: 0; padding: 12px clamp(18px, 5vw, 72px); background: rgba(255,255,255,.88); box-shadow: 0 8px 28px rgba(73,54,117,.08); z-index: 1000; }
+        .nav-logo { font-size: 21px; white-space: nowrap; }
+        .nav-links { align-items: center; gap: 8px; }
+        .nav-button { display: inline-flex; align-items: center; gap: 8px; border: 1px solid transparent; border-radius: 999px; padding: 11px 16px; color: var(--text-muted); background: transparent; font: inherit; font-size: 14px; font-weight: 700; text-decoration: none; cursor: pointer; transition: background .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease; }
+        .nav-button:hover, .nav-button:focus-visible { color: var(--pastel-purple-dark); background: #f3edff; transform: translateY(-1px); }
+        .nav-button.is-active { color: white; background: linear-gradient(135deg, #9270df, #bc89e8); box-shadow: 0 7px 18px rgba(118,81,197,.22); }
+        .nav-menu-toggle.is-active { color: white; }
+        .menu-chevron { font-size: 16px; transition: transform .2s ease; }
+        .nav-menu-toggle[aria-expanded="true"] .menu-chevron { transform: rotate(180deg); }
+        .nav-submenu { top: calc(100% + 10px); right: 0; min-width: 245px; padding: 9px; border: 1px solid rgba(174,147,224,.25); border-radius: 18px; background: rgba(255,255,255,.98); box-shadow: 0 18px 44px rgba(48,39,68,.16); }
+        .nav-submenu button { padding: 12px 14px; border-radius: 12px; color: var(--text-main); font-size: 14px; }
+        .nav-submenu button:hover, .nav-submenu button:focus-visible { color: var(--pastel-purple-dark); background: #f4efff; }
+        .content-section[hidden], .guide-panel[hidden] { display: none !important; }
+        .hero-banner { isolation: isolate; width: min(1380px, calc(100% - 32px)); min-height: 350px; margin: 22px auto 0; padding: clamp(82px, 11vw, 138px) 24px 82px; overflow: hidden; border: 1px solid rgba(255,255,255,.55); border-radius: 32px; background: linear-gradient(120deg, #7151b9 0%, #9774dc 45%, #e58fb6 100%); box-shadow: 0 24px 60px rgba(96,67,148,.2); }
+        .hero-banner::before, .hero-banner::after { content: ''; position: absolute; z-index: -1; border-radius: 50%; background: rgba(255,255,255,.11); }
+        .hero-banner::before { width: 340px; height: 340px; top: -170px; right: 7%; }
+        .hero-banner::after { width: 250px; height: 250px; bottom: -160px; left: 8%; }
+        .hero-content { max-width: 820px; margin: 0 auto; }
+        .hero-kicker { margin-bottom: 14px; color: rgba(255,255,255,.8); font-size: 12px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+        .hero-title { margin-bottom: 14px; color: #fff; font-size: clamp(38px, 6vw, 66px); line-height: 1.04; letter-spacing: -.04em; -webkit-text-fill-color: #fff; text-shadow: 0 8px 28px rgba(45,27,84,.2); }
+        .hero-subtitle { max-width: 650px; color: rgba(255,255,255,.92); font-size: clamp(15px, 2vw, 18px); }
+        .hero-highlights { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+        .hero-highlights span { padding: 9px 14px; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; color: #fff; background: rgba(255,255,255,.12); font-size: 13px; font-weight: 700; backdrop-filter: blur(8px); }
+        .portal-container { min-height: 48vh; max-width: 1320px; padding: 54px 24px 72px; gap: 32px; }
+        .content-section { animation: sectionReveal .35s ease both; scroll-margin-top: 96px; }
+        @keyframes sectionReveal { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .section-header { margin-bottom: 26px; padding: 25px 20px; border: 1px solid rgba(183,156,237,.2); border-radius: 24px; background: rgba(255,255,255,.74); box-shadow: 0 10px 28px rgba(74,54,117,.06); }
+        .section-eyebrow { display: block; margin-bottom: 8px; color: var(--pastel-purple-dark); font-size: 11px; font-weight: 800; letter-spacing: .16em; }
+        .section-title { margin-bottom: 8px; font-size: clamp(28px, 4vw, 38px); letter-spacing: -.025em; }
+        .section-subtitle { font-size: 15px; line-height: 1.6; }
+        .grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+        .card { border: 1px solid rgba(183,156,237,.24); border-radius: 24px; box-shadow: 0 12px 34px rgba(66,48,104,.08); }
+        .card:hover { transform: translateY(-5px); border-color: rgba(140,106,214,.52); box-shadow: 0 20px 42px rgba(91,66,145,.16); }
+        .music-card { color: inherit; text-decoration: none; }
+        .music-card .card-img { height: 228px; }
+        .music-cover { display: flex; align-items: center; justify-content: center; }
+        .cover-one { background: radial-gradient(circle at 25% 25%, #ffd6e3 0, transparent 32%), linear-gradient(135deg, #9270df, #f28aae); }
+        .cover-two { background: radial-gradient(circle at 75% 22%, #eee0ff 0, transparent 30%), linear-gradient(135deg, #6853b8, #a88beb); }
+        .cover-three { background: radial-gradient(circle at 24% 20%, #fff3cd 0, transparent 30%), linear-gradient(135deg, #e47caa, #9676df); }
+        .music-art { font-size: 78px; filter: drop-shadow(0 8px 18px rgba(55,37,95,.24)); transition: transform .25s ease; }
+        .music-card:hover .music-art { transform: scale(1.08) rotate(-4deg); }
+        .music-overlay { background: linear-gradient(to bottom, transparent 48%, rgba(44,31,69,.52)); }
+        .music-badge { padding: 7px 11px; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; background: rgba(63,45,100,.58); font-size: 10px; letter-spacing: .1em; }
+        .music-content { flex: 1; gap: 11px; padding: 22px; }
+        .music-title { font-size: 19px; line-height: 1.35; }
+        .music-desc { min-height: 42px; }
+        .music-player-box { display: flex; flex-direction: row; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid rgba(183,156,237,.18); border-radius: 14px; color: var(--pastel-purple-dark); background: #f5f0ff; font-size: 13px; font-weight: 800; }
+        .play-icon { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; color: white; background: linear-gradient(135deg, #9270df, #bc89e8); font-size: 10px; }
+        .play-arrow { margin-left: auto; font-size: 17px; }
+        .arcade-card { min-height: 268px; padding: 26px; }
+        .arcade-card .card-top { margin-bottom: 20px; }
+        .game-icon { display: inline-grid; place-items: center; width: 62px; height: 62px; margin-bottom: 18px; border: 1px solid rgba(183,156,237,.2); border-radius: 20px; background: linear-gradient(145deg, #f4efff, #fff4f8); }
+        .game-title { margin-bottom: 9px; font-size: 20px; }
+        .game-desc { font-size: 14px; line-height: 1.65; }
+        .play-btn { padding: 11px 22px; border-radius: 999px; background: linear-gradient(135deg, #9270df, #bc89e8); }
+        .travel-card .card-img { height: 190px; }
+        .travel-card .card-content { padding: 19px 20px 21px; }
+        .travel-card .card-content h3 { font-size: 19px; }
+        .game-modal { max-height: 92vh; overflow-y: auto; }
+        .game-screen { width: 100%; }
+        .guide-panel { scroll-margin-top: 96px; }
+        @media (max-width: 760px) {
+            nav.site-nav { position: sticky; align-items: center; flex-direction: column; gap: 9px; padding: 12px 12px 10px; }
+            .nav-logo { font-size: 18px; }
+            .nav-links { justify-content: center; gap: 5px; }
+            .nav-button { padding: 9px 12px; font-size: 12px; }
+            .nav-submenu { right: 50%; transform: translateX(50%); min-width: 225px; }
+            .hero-banner { width: calc(100% - 20px); min-height: 300px; margin-top: 12px; padding: 74px 18px 62px; border-radius: 24px; }
+            .hero-highlights { gap: 7px; }
+            .hero-highlights span { padding: 8px 11px; font-size: 12px; }
+            .portal-container { padding: 36px 15px 54px; }
+            .section-header { padding: 21px 14px; border-radius: 20px; }
+            .grid { grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)); gap: 17px; }
+            .music-card .card-img { height: 200px; }
+            .game-modal { padding: 22px 17px; }
+        }
+        @media (max-width: 520px) {
+            .nav-links { width: 100%; justify-content: space-between; }
+            .nav-button { gap: 5px; padding: 9px 10px; font-size: 11px; }
+            .grid { grid-template-columns: 1fr; }
+            .hero-title { font-size: 39px; }
+            .hero-subtitle { font-size: 15px; }
+        }
     </style>
 </head>
 <body>
@@ -538,169 +624,126 @@
         <span class="floating-flower" style="top: 92%; left: 80%;">🌼</span>
     </div>
 
-    <nav>
-        <a href="#" class="nav-logo">🌸 HongAnh Homepage</a>
+    <nav class="site-nav" aria-label="주 메뉴">
+        <a href="#top" class="nav-logo" aria-label="HongAnh Homepage 처음으로">🌸 HongAnh</a>
         <ul class="nav-links">
-            <li><a href="#music">음악 3곡 듣기</a></li>
-            <li><a href="#arcade">Game 아케이드</a></li>
+            <li><button id="main-menu-music" class="nav-button is-active" type="button" data-main-menu="music" aria-controls="music" aria-current="page" onclick="showSection('music')">🎵 나의 음악</button></li>
+            <li><button id="main-menu-games" class="nav-button" type="button" data-main-menu="games" aria-controls="arcade" onclick="showSection('arcade')">🎮 재밌는 게임</button></li>
             <li class="nav-guide-menu">
-                <button id="guideMenuToggle" class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="guideSubmenu" onclick="toggleGuideMenu()">
-                    한국 가이드 TOP 10 <span aria-hidden="true">⌄</span>
-                </button>
+                <button id="main-menu-guide" class="nav-button nav-menu-toggle" type="button" data-main-menu="guide" aria-expanded="false" aria-controls="guideSubmenu" onclick="toggleGuideMenu()">🧭 여행 &amp; 음식 <span class="menu-chevron" aria-hidden="true">⌄</span></button>
                 <ul id="guideSubmenu" class="nav-submenu" hidden>
-                    <li><button type="button" onclick="showGuide('food')">1. 한국 음식 TOP 10</button></li>
-                    <li><button type="button" onclick="showGuide('travel')">2. 한국 여행지 TOP 10</button></li>
+                    <li><button id="guide-travel" type="button" aria-controls="travel-seoul" onclick="showSection('travel-seoul')">서울 여행지 TOP 10</button></li>
+                    <li><button id="guide-food" type="button" aria-controls="travel-food" onclick="showSection('travel-food')">한국 음식 TOP 10</button></li>
                 </ul>
             </li>
         </ul>
     </nav>
 
-    <header class="hero-banner">
-        <h1 class="hero-title" style="color: #ffffff;">HongAnh Homepage</h1>
-        <p class="hero-subtitle">🌸 따스한 파스텔 연보라 감성 속에서 즐기는 Suno AI 음악 스트리밍, 미니 게임 아케이드, 그리고 알찬 한국 여행 & 미식 가이드입니다.</p>
+    <header class="hero-banner" id="top">
+        <div class="hero-content">
+            <p class="hero-kicker">A little corner made with love</p>
+            <h1 class="hero-title">HongAnh Homepage</h1>
+            <p class="hero-subtitle">제가 만든 음악과 게임, 한국의 여행지와 음식을 한곳에서 만나보세요.</p>
+            <div class="hero-highlights" aria-label="홈페이지 콘텐츠">
+                <span>🎶 나만의 음악</span><span>🕹️ 여섯 가지 게임</span><span>🍲 한국 가이드</span>
+            </div>
+        </div>
     </header>
 
-    <div class="portal-container">
+    <main id="mainContent" class="portal-container">
         
         <!-- Section 0: Music Tracks & Suno Featured Tracks -->
-        <section id="music">
+        <section id="music" class="content-section" aria-labelledby="main-menu-music">
             <div class="section-header">
-                <h2 class="section-title purple-gradient-text">🎵 HONGANH MUSIC — 3곡 듣기</h2>
-                <p class="section-subtitle">세 가지 Suno 오리지널 곡을 골라 바로 들어보세요.</p>
+                <span class="section-eyebrow">HONGANH ORIGINALS</span>
+                <h2 class="section-title purple-gradient-text">🎵 나의 음악</h2>
+                <p class="section-subtitle">마음에 드는 곡을 누르면 Suno에서 바로 들을 수 있어요.</p>
             </div>
-            <div class="grid">
-                <!-- Suno Track 1 -->
-                <div class="card music-card" style="--theme-color: #ff70a6;">
-                    <div class="card-img" style="background: linear-gradient(135deg, #b79ced, #ff70a6); display: flex; align-items: center; justify-content: center; position: relative;">
-                        <span style="font-size: 64px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));">🎧</span>
-                        <div class="music-overlay">
-                            <span class="music-badge" style="background: rgba(140, 106, 214, 0.9);">Suno Track 01</span>
-                        </div>
-                    </div>
-                    <div class="music-content">
-                        <h3 class="music-title">HongAnh Suno Masterpiece #1</h3>
-                        <p class="music-desc">첫 번째 Suno AI 공식 사운드트랙입니다. 링크를 통해 오리지널 곡을 감상하세요!</p>
-                        <div class="music-player-box">
-                            <div class="music-info">
-                                <span>재생 링크</span><span>Suno에서 듣기</span>
-                            </div>
-                            <a href="https://suno.com/s/DQh4PKXac2WiP9Mg" target="_blank" rel="noopener noreferrer" class="suno-btn">Suno에서 듣기 (1) ↗</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Suno Track 2 -->
-                <div class="card music-card" style="--theme-color: #8c6ad6;">
-                    <div class="card-img" style="background: linear-gradient(135deg, #b79ced, #8c6ad6); display: flex; align-items: center; justify-content: center; position: relative;">
-                        <span style="font-size: 64px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));">🎸</span>
-                        <div class="music-overlay">
-                            <span class="music-badge" style="background: rgba(140, 106, 214, 0.9);">Suno Track 02</span>
-                        </div>
-                    </div>
-                    <div class="music-content">
-                        <h3 class="music-title">HongAnh Suno Masterpiece #2</h3>
-                        <p class="music-desc">두 번째 Suno AI 공식 사운드트랙입니다. 멋진 멜로디와 사운드를 감상해보세요!</p>
-                        <div class="music-player-box">
-                            <div class="music-info">
-                                <span>재생 링크</span><span>Suno에서 듣기</span>
-                            </div>
-                            <a href="https://suno.com/s/iOlJA1BIPYMds2s7" target="_blank" rel="noopener noreferrer" class="suno-btn">Suno에서 듣기 (2) ↗</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Suno Track 3 -->
-                <div class="card music-card" style="--theme-color: #ffb7c5;">
-                    <div class="card-img" style="background: linear-gradient(135deg, #ffb7c5, #e056fd); display: flex; align-items: center; justify-content: center; position: relative;">
-                        <span style="font-size: 64px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));">🔥</span>
-                        <div class="music-overlay">
-                            <span class="music-badge" style="background: rgba(224, 86, 253, 0.9);">Suno Track 03</span>
-                        </div>
-                    </div>
-                    <div class="music-content">
-                        <h3 class="music-title">HongAnh Suno Masterpiece #3</h3>
-                        <p class="music-desc">새롭게 추가된 세 번째 Suno AI 최신 사운드트랙입니다. 지금 바로 플레이하세요!</p>
-                        <div class="music-player-box">
-                            <div class="music-info">
-                                <span>재생 링크</span><span>Suno에서 듣기</span>
-                            </div>
-                            <a href="https://suno.com/s/FIIixVJ2sP3AsEB7" target="_blank" rel="noopener noreferrer" class="suno-btn">Suno에서 듣기 (3) ↗</a>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="grid music-grid">
+                <a class="card music-card" href="https://suno.com/s/DQh4PKXac2WiP9Mg" target="_blank" rel="noopener noreferrer" aria-label="HongAnh Suno Masterpiece 1번 곡 듣기">
+                    <div class="card-img music-cover cover-one"><span class="music-art" aria-hidden="true">🎧</span><div class="music-overlay"><span class="music-badge">ORIGINAL · 01</span></div></div>
+                    <div class="music-content"><h3 class="music-title">HongAnh Suno Masterpiece #1</h3><p class="music-desc">첫 번째 오리지널 사운드트랙을 감상해 보세요.</p><span class="music-player-box"><span class="play-icon" aria-hidden="true">▶</span><span>곡 바로 듣기</span><span class="play-arrow" aria-hidden="true">↗</span></span></div>
+                </a>
+                <a class="card music-card" href="https://suno.com/s/iOlJA1BIPYMds2s7" target="_blank" rel="noopener noreferrer" aria-label="HongAnh Suno Masterpiece 2번 곡 듣기">
+                    <div class="card-img music-cover cover-two"><span class="music-art" aria-hidden="true">🎸</span><div class="music-overlay"><span class="music-badge">ORIGINAL · 02</span></div></div>
+                    <div class="music-content"><h3 class="music-title">HongAnh Suno Masterpiece #2</h3><p class="music-desc">두 번째 곡의 멋진 멜로디와 사운드를 만나보세요.</p><span class="music-player-box"><span class="play-icon" aria-hidden="true">▶</span><span>곡 바로 듣기</span><span class="play-arrow" aria-hidden="true">↗</span></span></div>
+                </a>
+                <a class="card music-card" href="https://suno.com/s/FIIixVJ2sP3AsEB7" target="_blank" rel="noopener noreferrer" aria-label="HongAnh Suno Masterpiece 3번 곡 듣기">
+                    <div class="card-img music-cover cover-three"><span class="music-art" aria-hidden="true">✨</span><div class="music-overlay"><span class="music-badge">ORIGINAL · 03</span></div></div>
+                    <div class="music-content"><h3 class="music-title">HongAnh Suno Masterpiece #3</h3><p class="music-desc">세 번째 사운드트랙을 눌러 감상해 보세요.</p><span class="music-player-box"><span class="play-icon" aria-hidden="true">▶</span><span>곡 바로 듣기</span><span class="play-arrow" aria-hidden="true">↗</span></span></div>
+                </a>
             </div>
         </section>
 
         <!-- Section 1: Mini Game Arcade (Interactive) -->
-        <section id="arcade">
+        <section id="arcade" class="content-section" hidden aria-labelledby="main-menu-games">
             <div class="section-header">
-                <h2 class="section-title purple-gradient-text">🌸 GAME ARCADE (미니 게임 아케이드)</h2>
-                <p class="section-subtitle">클릭하여 웹사이트 내에서 바로 게임을 즐기고 점수를 기록하세요!</p>
+                <h2 class="section-title purple-gradient-text">🌸 재밌는 게임</h2>
+                <p class="section-subtitle">마음에 드는 게임을 골라 바로 플레이해 보세요.</p>
             </div>
             <div class="grid">
                 <!-- 1 -->
                 <div class="card arcade-card">
                     <div class="card-top">
                         <span class="game-icon">🎲</span>
-                        <h3 class="game-title">Number Guessing</h3>
+                        <h3 class="game-title">숫자 맞추기</h3>
                         <p class="game-desc">1~100 사이의 숨겨진 숫자를 맞춰보세요! 최소 시도로 정답을 찾는 두뇌 추리 게임입니다.</p>
                     </div>
-                    <button class="play-btn" onclick="openGame('number')">PLAY NOW</button>
+                    <button class="play-btn" onclick="openGame('number')">게임 시작하기</button>
                 </div>
                 <!-- 2 -->
                 <div class="card arcade-card">
                     <div class="card-top">
                         <span class="game-icon">❌</span>
-                        <h3 class="game-title">Tic Tac Toe</h3>
-                        <p class="game-desc">컴퓨터 또는 친구와 즐기는 3목 승부! 격자에 먼저 3개를 완성해 승리를 쟁취하세요.</p>
+                        <h3 class="game-title">틱택토</h3>
+                        <p class="game-desc">친구와 번갈아 즐기는 3목 승부! 한 줄에 먼저 세 칸을 완성해 보세요.</p>
                     </div>
-                    <button class="play-btn" onclick="openGame('tictactoe')">PLAY NOW</button>
+                    <button class="play-btn" onclick="openGame('tictactoe')">게임 시작하기</button>
                 </div>
                 <!-- 3 -->
                 <div class="card arcade-card">
                     <div class="card-top">
                         <span class="game-icon">✊</span>
-                        <h3 class="game-title">Rock Paper Scissors</h3>
+                        <h3 class="game-title">가위바위보</h3>
                         <p class="game-desc">가위바위보 연승에 도전하세요! 컴퓨터를 상대로 최고 연승 점수를 경신합니다.</p>
                     </div>
-                    <button class="play-btn" onclick="openGame('rps')">PLAY NOW</button>
+                    <button class="play-btn" onclick="openGame('rps')">게임 시작하기</button>
                 </div>
                 <!-- 4 -->
                 <div class="card arcade-card">
                     <div class="card-top">
                         <span class="game-icon">🎯</span>
-                        <h3 class="game-title">Click Target Game</h3>
+                        <h3 class="game-title">타깃 클릭</h3>
                         <p class="game-desc">나타나는 타겟을 제한 시간 내에 가장 많이 클릭하여 반사 신경과 점수를 테스트하세요!</p>
                     </div>
-                    <button class="play-btn" onclick="openGame('target')">PLAY NOW</button>
+                    <button class="play-btn" onclick="openGame('target')">게임 시작하기</button>
                 </div>
                 <!-- 5 -->
                 <div class="card arcade-card">
                     <div class="card-top">
                         <span class="game-icon">🃏</span>
-                        <h3 class="game-title">Memory Match</h3>
+                        <h3 class="game-title">기억력 카드 짝맞추기</h3>
                         <p class="game-desc">동일한 카드 짝을 빠르게 찾아 매칭하여 순간 기억력과 최고 기록에 도전하세요.</p>
                     </div>
-                    <button class="play-btn" onclick="openGame('memory')">PLAY NOW</button>
+                    <button class="play-btn" onclick="openGame('memory')">게임 시작하기</button>
                 </div>
                 <!-- 6 -->
                 <div class="card arcade-card">
                     <div class="card-top">
                         <span class="game-icon">⚡</span>
-                        <h3 class="game-title">Reaction Test</h3>
+                        <h3 class="game-title">반응 속도 테스트</h3>
                         <p class="game-desc">신호가 연보라빛으로 바뀌는 찰나의 순간을 클릭하여 밀리초(ms) 반응 속도를 측정합니다.</p>
                     </div>
-                    <button class="play-btn" onclick="openGame('reaction')">PLAY NOW</button>
+                    <button class="play-btn" onclick="openGame('reaction')">게임 시작하기</button>
                 </div>
             </div>
         </section>
 
         <!-- Section 2: Seoul Attractions BEST 10 -->
-        <section id="travel-seoul" class="guide-panel" hidden>
+        <section id="travel-seoul" class="content-section guide-panel" hidden aria-labelledby="guide-travel">
             <div class="section-header">
-                <h2 class="section-title purple-gradient-text">🏛️ 한국 여행지 TOP 10</h2>
-                <p class="section-subtitle">서울에서 꼭 가볼 만한 대표 명소 10곳을 소개합니다.</p>
+                <h2 class="section-title purple-gradient-text">🏛️ 서울 여행지 TOP 10</h2>
+                <p class="section-subtitle">서울의 매력적인 명소 10곳을 소개합니다.</p>
             </div>
             <div class="grid">
                 <div class="card travel-card">
@@ -777,7 +820,7 @@
         </section>
 
         <!-- Section 3: Korean Food BEST 10 -->
-        <section id="travel-food" class="guide-panel">
+        <section id="travel-food" class="content-section guide-panel" hidden aria-labelledby="guide-food">
             <div class="section-header">
                 <h2 class="section-title purple-gradient-text">🍲 한국 음식 TOP 10</h2>
                 <p class="section-subtitle">꼭 맛봐야 할 한국 음식 10가지를 소개합니다.</p>
@@ -856,11 +899,11 @@
             </div>
         </section>
 
-    </div>
+    </main>
 
     <!-- Interactive Game Modal Window -->
     <div id="gameModalBackdrop" class="game-modal-backdrop">
-        <div class="game-modal">
+        <div class="game-modal" role="dialog" aria-modal="true" aria-labelledby="modalGameTitle">
             <div class="game-modal-header">
                 <h3 id="modalGameTitle" class="game-modal-title">Mini Game</h3>
                 <button class="close-modal-btn" onclick="closeGame()">&times;</button>
@@ -879,42 +922,59 @@
     </footer>
 
     <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach((section) => {
+                section.hidden = section.id !== sectionId;
+            });
+            const activeMenu = sectionId === 'music' ? 'music' : sectionId === 'arcade' ? 'games' : 'guide';
+            document.querySelectorAll('[data-main-menu]').forEach((button) => {
+                const isActive = button.dataset.mainMenu === activeMenu;
+                button.classList.toggle('is-active', isActive);
+                if (isActive) button.setAttribute('aria-current', 'page');
+                else button.removeAttribute('aria-current');
+            });
+            document.getElementById('guideSubmenu').hidden = true;
+            document.getElementById('main-menu-guide').setAttribute('aria-expanded', 'false');
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
         function toggleGuideMenu() {
-            const toggle = document.getElementById('guideMenuToggle');
+            const toggle = document.getElementById('main-menu-guide');
             const submenu = document.getElementById('guideSubmenu');
             const isOpen = toggle.getAttribute('aria-expanded') === 'true';
             toggle.setAttribute('aria-expanded', String(!isOpen));
             submenu.hidden = isOpen;
         }
 
-        function showGuide(topic) {
-            const panels = {
-                food: document.getElementById('travel-food'),
-                travel: document.getElementById('travel-seoul')
-            };
-            Object.entries(panels).forEach(([name, panel]) => {
-                panel.hidden = name !== topic;
-            });
-            document.getElementById('guideSubmenu').hidden = true;
-            document.getElementById('guideMenuToggle').setAttribute('aria-expanded', 'false');
-            panels[topic].scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
         document.addEventListener('click', (event) => {
             if (!event.target.closest('.nav-guide-menu')) {
                 document.getElementById('guideSubmenu').hidden = true;
-                document.getElementById('guideMenuToggle').setAttribute('aria-expanded', 'false');
+                document.getElementById('main-menu-guide').setAttribute('aria-expanded', 'false');
             }
         });
 
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
                 document.getElementById('guideSubmenu').hidden = true;
-                document.getElementById('guideMenuToggle').setAttribute('aria-expanded', 'false');
+                document.getElementById('main-menu-guide').setAttribute('aria-expanded', 'false');
+                if (document.getElementById('gameModalBackdrop').style.display === 'flex') closeGame();
             }
+        });
+
+        document.getElementById('gameModalBackdrop').addEventListener('click', (event) => {
+            if (event.target === event.currentTarget) closeGame();
         });
         let currentGame = null;
         let gameState = {};
+        let memState = { first: null, lock: false, timeout: null };
+
+        function cleanupGame() {
+            if (gameState.timer) clearInterval(gameState.timer);
+            if (gameState.timeout) clearTimeout(gameState.timeout);
+            if (memState.timeout) clearTimeout(memState.timeout);
+            gameState = {};
+            memState = { first: null, lock: false, timeout: null };
+        }
 
         function openGame(gameType) {
             currentGame = gameType;
@@ -923,21 +983,24 @@
         }
 
         function closeGame() {
+            cleanupGame();
             document.getElementById('gameModalBackdrop').style.display = 'none';
             currentGame = null;
         }
 
         function initGame(type) {
+            cleanupGame();
+            currentGame = type;
             const titleEl = document.getElementById('modalGameTitle');
             const contentEl = document.getElementById('modalGameContent');
 
             if (type === 'number') {
-                titleEl.innerText = "Number Guessing (숫자 맞추기)";
-                gameState = { target: Math.floor(Math.random() * 100) + 1, attempts: 0 };
+                titleEl.innerText = "숫자 맞추기 (숫자 맞추기)";
+                gameState = { target: Math.floor(Math.random() * 100) + 1, attempts: 0, won: false };
                 contentEl.innerHTML = `
                     <div class="game-score-display">시도 횟수: <span id="numAttempts">0</span></div>
                     <p style="color: var(--text-muted); font-size: 14px;">1부터 100 사이의 숫자를 맞춰보세요!</p>
-                    <input type="number" id="numInput" class="game-input" min="1" max="100" placeholder="숫자 입력">
+                    <input type="number" id="numInput" class="game-input" min="1" max="100" placeholder="숫자 입력" onkeydown="if(event.key === 'Enter') guessNumber()">
                     <div class="game-controls">
                         <button class="game-action-btn btn-primary" onclick="guessNumber()">정답 확인</button>
                         <button class="game-action-btn btn-secondary" onclick="initGame('number')">다시 시작</button>
@@ -945,7 +1008,7 @@
                     <p id="numFeedback" style="font-size: 14px; font-weight: bold; color: var(--pastel-purple-dark);"></p>
                 `;
             } else if (type === 'tictactoe') {
-                titleEl.innerText = "Tic Tac Toe (3목 게임)";
+                titleEl.innerText = "틱택토 (3목 게임)";
                 gameState = { board: Array(9).fill(''), turn: 'X', gameOver: false };
                 let gridHtml = '<div style="display: grid; grid-template-columns: repeat(3, 60px); gap: 6px; justify-content: center;">';
                 for (let i = 0; i < 9; i++) {
@@ -961,7 +1024,7 @@
                     <p id="tttFeedback" style="font-size: 14px; font-weight: bold; color: #ff70a6;"></p>
                 `;
             } else if (type === 'rps') {
-                titleEl.innerText = "Rock Paper Scissors (가위바위보)";
+                titleEl.innerText = "가위바위보 (가위바위보)";
                 gameState = { wins: 0, streak: 0 };
                 contentEl.innerHTML = `
                     <div class="game-score-display">연승 기록: <span id="rpsStreak">0</span> (총 승리: <span id="rpsWins">0</span>)</div>
@@ -990,7 +1053,7 @@
                     </div>
                 `;
             } else if (type === 'memory') {
-                titleEl.innerText = "Memory Match (카드 기억 매칭)";
+                titleEl.innerText = "기억력 카드 짝맞추기 (카드 기억 매칭)";
                 gameState = { cards: ['🌸','🌸','🌼','🌼','🌷','🌷','💮','💮'].sort(() => Math.random() - 0.5), flipped: [], matched: 0 };
                 let memHtml = '<div style="display: grid; grid-template-columns: repeat(4, 55px); gap: 8px; justify-content: center;">';
                 for (let i = 0; i < 8; i++) {
@@ -1005,7 +1068,7 @@
                     </div>
                 `;
             } else if (type === 'reaction') {
-                titleEl.innerText = "Reaction Test (반응 속도 테스트)";
+                titleEl.innerText = "반응 속도 테스트 (반응 속도 테스트)";
                 gameState = { startTime: 0, status: 'waiting', timeout: null };
                 contentEl.innerHTML = `
                     <div id="reactionBox" onclick="reactionClick()" style="width: 100%; height: 130px; background: #b79ced; border-radius: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-weight: bold; font-size: 16px; color: #fff; box-shadow: 0 4px 15px rgba(183, 156, 237, 0.4);">
@@ -1021,15 +1084,17 @@
 
         // Game 1 logic
         function guessNumber() {
-            const val = parseInt(document.getElementById('numInput').value);
+            const val = Number(document.getElementById('numInput').value);
             const feedback = document.getElementById('numFeedback');
-            if (isNaN(val)) {
-                feedback.innerText = "올바른 숫자를 입력하세요!";
+            if (gameState.won) return;
+            if (!Number.isInteger(val) || val < 1 || val > 100) {
+                feedback.innerText = "1부터 100 사이의 숫자를 입력하세요!";
                 return;
             }
             gameState.attempts++;
             document.getElementById('numAttempts').innerText = gameState.attempts;
             if (val === gameState.target) {
+                gameState.won = true;
                 feedback.innerText = `🎉 정답입니다! (${gameState.attempts}회 만에 성공)`;
                 feedback.style.color = "#ff70a6";
             } else if (val < gameState.target) {
@@ -1133,8 +1198,8 @@
             if (!gameState.playing) return;
             const target = document.getElementById('clickTarget');
             const area = document.getElementById('targetArea');
-            const maxX = area.clientWidth - 40;
-            const maxY = area.clientHeight - 40;
+            const maxX = Math.max(0, area.clientWidth - 40);
+            const maxY = Math.max(0, area.clientHeight - 40);
             target.style.left = Math.floor(Math.random() * maxX) + 'px';
             target.style.top = Math.floor(Math.random() * maxY) + 'px';
             target.style.display = 'block';
@@ -1148,7 +1213,6 @@
         }
 
         // Game 5 logic
-        let memState = { first: null, lock: false };
         function flipMemoryCard(idx) {
             if (memState.lock) return;
             const btn = document.getElementById(`mem-${idx}`);
@@ -1164,15 +1228,18 @@
                     gameState.matched++;
                     document.getElementById('memScore').innerText = gameState.matched;
                     if (gameState.matched === 4) {
-                        setTimeout(() => alert('🏆 모든 카드를 맞췄습니다! 🌸'), 200);
+                        gameState.timeout = setTimeout(() => alert('🏆 모든 카드를 맞췄습니다! 🌸'), 200);
                     }
                 } else {
                     memState.lock = true;
-                    setTimeout(() => {
-                        document.getElementById(`mem-${firstIdx}`).innerText = '❓';
-                        document.getElementById(`mem-${idx}`).innerText = '❓';
+                    memState.timeout = setTimeout(() => {
+                        const firstCard = document.getElementById(`mem-${firstIdx}`);
+                        const secondCard = document.getElementById(`mem-${idx}`);
+                        if (firstCard) firstCard.innerText = '❓';
+                        if (secondCard) secondCard.innerText = '❓';
                         memState.lock = false;
-                    }, 600);
+                        memState.timeout = null;
+                    }, 650);
                 }
             }
         }
@@ -1213,6 +1280,8 @@
     </script>
 </body>
 </html>
+
+
 
 
 
