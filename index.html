@@ -598,6 +598,20 @@
         .music-player-box { display: flex; flex-direction: row; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid rgba(183,156,237,.18); border-radius: 14px; color: var(--pastel-purple-dark); background: #f5f0ff; font-size: 13px; font-weight: 800; }
         .play-icon { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; color: white; background: linear-gradient(135deg, #9270df, #bc89e8); font-size: 10px; }
         .play-arrow { margin-left: auto; font-size: 17px; }
+        body.music-mode { background-color: #e9f4ff; background-image: linear-gradient(rgba(255,255,255,.1), rgba(255,255,255,.18)), url("assets/music-background.svg"); background-position: center; background-size: cover; background-attachment: fixed; background-repeat: no-repeat; }
+        body.music-mode .flower-bg { display: none; }
+        body.music-mode .portal-container { width: 100%; max-width: none; min-height: calc(100svh - 76px); padding: clamp(24px, 4vh, 44px) clamp(16px, 4vw, 60px); gap: 0; background: rgba(255,255,255,.12); }
+        body.music-mode #music.content-section { display: flex; flex-direction: column; justify-content: center; width: min(1320px, 100%); min-height: calc(100svh - 160px); margin: 0 auto; }
+        body.music-mode #music .section-header { border-color: rgba(170,132,98,.2); background: rgba(255,252,247,.77); box-shadow: 0 10px 28px rgba(123,94,68,.08); }
+        body.music-mode #music .section-eyebrow { color: #ad8b6b; }
+        body.music-mode #music .section-title.purple-gradient-text { color: #9c7658; background: none; -webkit-text-fill-color: #9c7658; }
+        body.music-mode #music .section-subtitle { color: #b08e70; }
+        body.music-mode #music .music-card { color: #9d7657; background: rgba(255,253,249,.91); border-color: rgba(177,137,101,.25); }
+        body.music-mode #music .music-title { color: #9f7758; }
+        body.music-mode #music .music-desc { color: #b08e70; }
+        body.music-mode #music .music-player-box { color: #a47c5d; background: rgba(249,239,227,.9); border-color: rgba(177,137,101,.2); }
+        body.music-mode #music .music-badge { background: rgba(157,119,84,.86); }
+        body.music-mode #music .play-icon { background: linear-gradient(135deg, #b88c68, #d4b395); }
         .arcade-card { min-height: 268px; padding: 26px; }
         .arcade-card .card-top { margin-bottom: 20px; }
         .game-icon { display: inline-grid; place-items: center; width: 62px; height: 62px; margin-bottom: 18px; border: 1px solid rgba(183,156,237,.2); border-radius: 20px; background: linear-gradient(145deg, #f4efff, #fff4f8); }
@@ -970,6 +984,7 @@
             document.getElementById('mainContent').hidden = false;
             document.querySelector('.site-nav').hidden = false;
             document.getElementById('siteFooter').hidden = false;
+            document.body.classList.toggle('music-mode', sectionId === 'music');
             document.querySelectorAll('.content-section').forEach((item) => {
                 item.hidden = item.id !== sectionId;
             });
@@ -989,6 +1004,7 @@
             document.getElementById('mainContent').hidden = true;
             document.querySelector('.site-nav').hidden = true;
             document.getElementById('siteFooter').hidden = true;
+            document.body.classList.remove('music-mode');
             document.querySelectorAll('[data-main-menu]').forEach((button) => {
                 button.classList.remove('is-active');
                 button.removeAttribute('aria-current');
