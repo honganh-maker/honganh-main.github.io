@@ -103,6 +103,49 @@
             transform: translateY(-1px);
         }
 
+        .nav-guide-menu { position: relative; }
+        .nav-menu-toggle, .nav-submenu button {
+            border: 0;
+            background: none;
+            color: var(--text-muted);
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .nav-menu-toggle { font-size: 14px; padding: 2px 0; }
+        .nav-menu-toggle:hover, .nav-menu-toggle:focus-visible,
+        .nav-submenu button:hover, .nav-submenu button:focus-visible {
+            color: var(--pastel-purple-dark);
+        }
+        .nav-submenu {
+            position: absolute;
+            top: calc(100% + 12px);
+            right: 0;
+            z-index: 1001;
+            min-width: 220px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 8px;
+            list-style: none;
+            background: #fff;
+            border: 1px solid rgba(183, 156, 237, 0.35);
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(51, 43, 71, 0.16);
+        }
+        .nav-submenu[hidden] { display: none; }
+        .nav-submenu button {
+            width: 100%;
+            padding: 11px 12px;
+            text-align: left;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+        .nav-submenu button:hover, .nav-submenu button:focus-visible {
+            background: #f4f0fc;
+        }
+        .guide-panel { scroll-margin-top: 100px; }
+        .guide-panel[hidden] { display: none !important; }
         /* Hero Banner */
         .hero-banner {
             position: relative;
@@ -473,7 +516,10 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            nav { padding: 12px 20px; }
+            nav { padding: 12px 20px; gap: 10px; }
+            .nav-logo { font-size: 18px; }
+            .nav-links { gap: 10px 14px; justify-content: flex-end; }
+            .nav-links a, .nav-menu-toggle { font-size: 12px; }
             .hero-banner { padding: 130px 15px 60px 15px; }
             .hero-title { font-size: 34px; }
             .portal-container { padding: 40px 15px; gap: 60px; }
@@ -495,10 +541,17 @@
     <nav>
         <a href="#" class="nav-logo">🌸 HongAnh Homepage</a>
         <ul class="nav-links">
-            <li><a href="#music">음악 트랙 & Suno</a></li>
+            <li><a href="#music">음악 3곡 듣기</a></li>
             <li><a href="#arcade">Game 아케이드</a></li>
-            <li><a href="#travel-seoul">서울 여행지 BEST 10</a></li>
-            <li><a href="#travel-food">한국 음식 BEST 10</a></li>
+            <li class="nav-guide-menu">
+                <button id="guideMenuToggle" class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="guideSubmenu" onclick="toggleGuideMenu()">
+                    한국 가이드 TOP 10 <span aria-hidden="true">⌄</span>
+                </button>
+                <ul id="guideSubmenu" class="nav-submenu" hidden>
+                    <li><button type="button" onclick="showGuide('food')">1. 한국 음식 TOP 10</button></li>
+                    <li><button type="button" onclick="showGuide('travel')">2. 한국 여행지 TOP 10</button></li>
+                </ul>
+            </li>
         </ul>
     </nav>
 
@@ -512,8 +565,8 @@
         <!-- Section 0: Music Tracks & Suno Featured Tracks -->
         <section id="music">
             <div class="section-header">
-                <h2 class="section-title purple-gradient-text">🎵 HONGANH MUSIC TRACKS & SUNO AI</h2>
-                <p class="section-subtitle">Suno AI 공식 스트리밍 및 따스한 감성을 담은 피아노, 로파이, 국악 트랙</p>
+                <h2 class="section-title purple-gradient-text">🎵 HONGANH MUSIC — 3곡 듣기</h2>
+                <p class="section-subtitle">세 가지 Suno 오리지널 곡을 골라 바로 들어보세요.</p>
             </div>
             <div class="grid">
                 <!-- Suno Track 1 -->
@@ -529,10 +582,9 @@
                         <p class="music-desc">첫 번째 Suno AI 공식 사운드트랙입니다. 링크를 통해 오리지널 곡을 감상하세요!</p>
                         <div class="music-player-box">
                             <div class="music-info">
-                                <span>Suno Track Link</span>
-                                <span>Streaming</span>
+                                <span>재생 링크</span><span>Suno에서 듣기</span>
                             </div>
-                            <a href="https://suno.com/s/DQh4PKXac2WiP9Mg" target="_blank" class="suno-btn">Suno에서 듣기 (1) ↗</a>
+                            <a href="https://suno.com/s/DQh4PKXac2WiP9Mg" target="_blank" rel="noopener noreferrer" class="suno-btn">Suno에서 듣기 (1) ↗</a>
                         </div>
                     </div>
                 </div>
@@ -550,10 +602,9 @@
                         <p class="music-desc">두 번째 Suno AI 공식 사운드트랙입니다. 멋진 멜로디와 사운드를 감상해보세요!</p>
                         <div class="music-player-box">
                             <div class="music-info">
-                                <span>Suno Track Link</span>
-                                <span>Streaming</span>
+                                <span>재생 링크</span><span>Suno에서 듣기</span>
                             </div>
-                            <a href="https://suno.com/s/iOlJA1BIPYMds2s7" target="_blank" class="suno-btn">Suno에서 듣기 (2) ↗</a>
+                            <a href="https://suno.com/s/iOlJA1BIPYMds2s7" target="_blank" rel="noopener noreferrer" class="suno-btn">Suno에서 듣기 (2) ↗</a>
                         </div>
                     </div>
                 </div>
@@ -571,82 +622,13 @@
                         <p class="music-desc">새롭게 추가된 세 번째 Suno AI 최신 사운드트랙입니다. 지금 바로 플레이하세요!</p>
                         <div class="music-player-box">
                             <div class="music-info">
-                                <span>Suno Track Link</span>
-                                <span>Streaming</span>
+                                <span>재생 링크</span><span>Suno에서 듣기</span>
                             </div>
-                            <a href="https://suno.com/s/FIIixVJ2sP3AsEB7" target="_blank" class="suno-btn">Suno에서 듣기 (3) ↗</a>
+                            <a href="https://suno.com/s/FIIixVJ2sP3AsEB7" target="_blank" rel="noopener noreferrer" class="suno-btn">Suno에서 듣기 (3) ↗</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Track 1: 머그컵을 두고 -->
-                <div class="card music-card">
-                    <div class="card-img" style="background-image: url('mug_cup.jpeg');">
-                        <div class="music-overlay">
-                            <span class="music-badge">Track 01</span>
-                        </div>
-                    </div>
-                    <div class="music-content">
-                        <h3 class="music-title">머그컵을 두고</h3>
-                        <p class="music-desc">창가에 내리는 빗소리와 따뜻한 머그컵 한 잔의 여유를 담은 감성적인 로파이 멜로디.</p>
-                        <div class="music-player-box">
-                            <div class="music-info">
-                                <span>Now Playing / Preview</span>
-                                <span>3:24</span>
-                            </div>
-                            <audio class="audio-player" controls preload="none">
-                                <source src="#" type="audio/mpeg">
-                                브라우저가 오디오 재생을 지원하지 않습니다.
-                            </audio>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Track 2: 갓을 쓰고 걷는 발걸음 -->
-                <div class="card music-card">
-                    <div class="card-img" style="background-image: url('gat_walk.jpeg');">
-                        <div class="music-overlay">
-                            <span class="music-badge">Track 02</span>
-                        </div>
-                    </div>
-                    <div class="music-content">
-                        <h3 class="music-title">갓을 쓰고 걷는 발걸음</h3>
-                        <p class="music-desc">전통의 멋과 현대적 사운드가 어우러져 고즈넉한 길을 걷는 듯한 몽환적인 퓨전 국악 트랙.</p>
-                        <div class="music-player-box">
-                            <div class="music-info">
-                                <span>Now Playing / Preview</span>
-                                <span>2:58</span>
-                            </div>
-                            <audio class="audio-player" controls preload="none">
-                                <source src="#" type="audio/mpeg">
-                                브라우저가 오디오 재생을 지원하지 않습니다.
-                            </audio>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Track 3: 잔잔한 피아노 -->
-                <div class="card music-card">
-                    <div class="card-img" style="background-image: url('gentle_piano.jpeg');">
-                        <div class="music-overlay">
-                            <span class="music-badge">Track 03</span>
-                        </div>
-                    </div>
-                    <div class="music-content">
-                        <h3 class="music-title">잔잔한 피아노</h3>
-                        <p class="music-desc">마음을 차분하게 가라앉혀주는 따스하고 서정적인 피아노 연주곡.</p>
-                        <div class="music-player-box">
-                            <div class="music-info">
-                                <span>Now Playing / Preview</span>
-                                <span>4:12</span>
-                            </div>
-                            <audio class="audio-player" controls preload="none">
-                                <source src="#" type="audio/mpeg">
-                                브라우저가 오디오 재생을 지원하지 않습니다.
-                            </audio>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -715,10 +697,10 @@
         </section>
 
         <!-- Section 2: Seoul Attractions BEST 10 -->
-        <section id="travel-seoul">
+        <section id="travel-seoul" class="guide-panel" hidden>
             <div class="section-header">
-                <h2 class="section-title purple-gradient-text">🏛️ 서울 여행지 BEST 10</h2>
-                <p class="section-subtitle">서울의 매력적인 명소 10곳을 소개합니다.</p>
+                <h2 class="section-title purple-gradient-text">🏛️ 한국 여행지 TOP 10</h2>
+                <p class="section-subtitle">서울에서 꼭 가볼 만한 대표 명소 10곳을 소개합니다.</p>
             </div>
             <div class="grid">
                 <div class="card travel-card">
@@ -795,9 +777,9 @@
         </section>
 
         <!-- Section 3: Korean Food BEST 10 -->
-        <section id="travel-food">
+        <section id="travel-food" class="guide-panel">
             <div class="section-header">
-                <h2 class="section-title purple-gradient-text">🍲 한국 음식 BEST 10</h2>
+                <h2 class="section-title purple-gradient-text">🍲 한국 음식 TOP 10</h2>
                 <p class="section-subtitle">꼭 맛봐야 할 한국 음식 10가지를 소개합니다.</p>
             </div>
             <div class="grid">
@@ -897,6 +879,40 @@
     </footer>
 
     <script>
+        function toggleGuideMenu() {
+            const toggle = document.getElementById('guideMenuToggle');
+            const submenu = document.getElementById('guideSubmenu');
+            const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', String(!isOpen));
+            submenu.hidden = isOpen;
+        }
+
+        function showGuide(topic) {
+            const panels = {
+                food: document.getElementById('travel-food'),
+                travel: document.getElementById('travel-seoul')
+            };
+            Object.entries(panels).forEach(([name, panel]) => {
+                panel.hidden = name !== topic;
+            });
+            document.getElementById('guideSubmenu').hidden = true;
+            document.getElementById('guideMenuToggle').setAttribute('aria-expanded', 'false');
+            panels[topic].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.nav-guide-menu')) {
+                document.getElementById('guideSubmenu').hidden = true;
+                document.getElementById('guideMenuToggle').setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                document.getElementById('guideSubmenu').hidden = true;
+                document.getElementById('guideMenuToggle').setAttribute('aria-expanded', 'false');
+            }
+        });
         let currentGame = null;
         let gameState = {};
 
@@ -1197,3 +1213,7 @@
     </script>
 </body>
 </html>
+
+
+
+
