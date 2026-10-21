@@ -542,9 +542,13 @@
         .content-section[hidden], .guide-panel[hidden] { display: none !important; }
         nav.site-nav[hidden], #mainContent[hidden], #top[hidden], #homeView[hidden], #siteFooter[hidden] { display: none !important; }
         .hero-banner { isolation: isolate; display: grid; place-items: center; width: 100%; min-height: 100vh; min-height: 100svh; margin: 0; padding: clamp(28px, 6vh, 64px) 24px; overflow: hidden; border: 0; border-radius: 0; background: #c7d8f2; box-shadow: none; }
-        .hero-banner::before, .hero-banner::after { content: ''; position: absolute; z-index: -1; border-radius: 999px; background: #fffef7; opacity: .95; }
-        .hero-banner::before { width: 170px; height: 54px; top: 19%; left: -35px; box-shadow: 28px -19px 0 4px #fffef7, 67px 1px 0 -2px #fffef7; }
-        .hero-banner::after { width: 150px; height: 49px; right: -30px; bottom: 19%; box-shadow: -24px -17px 0 3px #fffef7, -65px 0 0 -2px #fffef7; }
+        .hero-cloud { position: absolute; z-index: 0; width: clamp(110px, 17vw, 180px); height: clamp(32px, 4.6vw, 48px); border-radius: 999px; background: #fffef7; box-shadow: 0 8px 16px rgba(92,112,158,.06); opacity: .96; pointer-events: none; animation: cloudDrift 18s ease-in-out infinite alternate; }
+        .hero-cloud::before, .hero-cloud::after { content: ''; position: absolute; border-radius: 50%; background: inherit; }
+        .hero-cloud::before { width: 38%; aspect-ratio: 1; left: 18%; bottom: 12%; }
+        .hero-cloud::after { width: 30%; aspect-ratio: 1; left: 48%; bottom: 22%; }
+        .hero-cloud-left { top: 17%; left: clamp(-28px, -2vw, -12px); }
+        .hero-cloud-right { right: clamp(-30px, -2vw, -12px); bottom: 17%; animation-delay: -9s; animation-direction: alternate-reverse; }
+        @keyframes cloudDrift { from { translate: 0 0; } to { translate: 18px -5px; } }
         .hero-content { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; width: min(900px, 100%); margin: 0 auto; }
         .hero-title-card { position: relative; isolation: isolate; width: min(760px, 92vw); margin: 2vh auto clamp(32px, 7vh, 74px); padding: clamp(44px, 7vw, 72px) clamp(22px, 5vw, 58px); }
         .hero-title-card::before { content: ''; position: absolute; z-index: -1; inset: 8% 1%; background: #fffef7; border-radius: 48% 52% 42% 58% / 56% 44% 58% 42%; box-shadow: 0 12px 0 rgba(255,255,255,.25); }
@@ -555,7 +559,7 @@
         .doodle-music { top: 31%; left: 11%; color: #f2d94e; font-size: 48px; transform: rotate(-12deg); }
         .doodle-flower { right: 12%; bottom: 24%; font-size: 35px; animation-delay: -1.6s; }
         .doodle-star { top: 20%; right: 17%; color: #fff0a1; font-size: 34px; animation-delay: -2.8s; }
-        .doodle-cloud { bottom: 16%; left: 21%; color: #fffef7; font-size: 45px; animation-delay: -3.7s; }
+        .doodle-cloud { display: none; }
         @keyframes doodleFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
         .hero-title { margin-bottom: 10px; color: var(--doodle-navy); font: 600 clamp(30px, 5vw, 58px)/1.03 'Fredoka', 'Jua', sans-serif; letter-spacing: -.025em; white-space: nowrap; -webkit-text-fill-color: var(--doodle-navy); text-shadow: none; }
         .hero-subtitle { max-width: 650px; margin: 0 auto; color: #3c4f7e; font: 400 clamp(17px, 2.2vw, 21px)/1.4 'Fredoka', 'Quicksand', sans-serif; letter-spacing: .01em; }
@@ -631,6 +635,9 @@
             .nav-button { padding: 9px 12px; font-size: 12px; }
             .nav-submenu { right: 50%; transform: translateX(50%); min-width: 225px; }
             .hero-banner { width: 100%; min-height: 100vh; min-height: 100svh; margin: 0; padding: 42px 14px; border-radius: 0; }
+            .hero-cloud { width: 112px; height: 34px; }
+            .hero-cloud-left { top: 13%; left: -12px; }
+            .hero-cloud-right { right: -14px; bottom: 13%; }
             .doodle-music { left: 3%; font-size: 30px; }
             .doodle-flower { right: 4%; font-size: 24px; }
             .doodle-star, .doodle-cloud { opacity: .45; }
@@ -679,6 +686,8 @@
 
     <header class="hero-banner" id="top">
         <div class="hero-doodles" aria-hidden="true"><span class="hero-doodle doodle-music">♫</span><span class="hero-doodle doodle-flower">🌼</span><span class="hero-doodle doodle-star">✦</span><span class="hero-doodle doodle-cloud">☁</span><span class="hero-doodle home-doodle-book">📗</span><span class="hero-doodle home-doodle-heart">♥</span></div>
+        <span class="hero-cloud hero-cloud-left" aria-hidden="true"></span>
+        <span class="hero-cloud hero-cloud-right" aria-hidden="true"></span>
         <div class="hero-content">
             <div class="hero-title-card">
                 <p class="hero-kicker">A little corner made with love</p>
