@@ -834,6 +834,32 @@
             text-underline-offset: .2em;
         }
 
+    
+        body.home-mode .nav-logo {
+            position: relative;
+            isolation: isolate;
+            gap: 0;
+            color: #17295d;
+            background: none;
+            -webkit-text-fill-color: #17295d;
+            font: 700 28px/1.05 "Fredoka", "Jua", sans-serif;
+            letter-spacing: -.045em;
+            text-shadow: 0 1px 0 rgba(255,255,255,.42), 0 3px 9px rgba(26,39,82,.12);
+        }
+        body.home-mode .nav-logo-text { position: relative; z-index: 1; }
+        body.home-mode .nav-logo-flower {
+            position: absolute;
+            z-index: 0;
+            top: 50%;
+            left: 44%;
+            transform: translate(-50%, -53%) rotate(-12deg);
+            color: initial;
+            -webkit-text-fill-color: initial;
+            font: 400 1.05em/1 "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+            opacity: .42;
+            pointer-events: none;
+        }
+
     </style>
 </head>
 <body class="home-mode">
@@ -849,7 +875,7 @@
     </div>
 
     <nav class="site-nav" aria-label="주 메뉴">
-        <a href="#top" class="nav-logo" aria-label="HongAnh Homepage 처음으로" onclick="showHome(); return false;">🌸 HongAnh</a>
+        <a href="#top" class="nav-logo" aria-label="HongAnh Homepage 처음으로" onclick="showHome(); return false;"><span class="nav-logo-flower" aria-hidden="true">🌸</span><span class="nav-logo-text">HongAnh</span></a>
         <ul class="nav-links">
             <li><button id="homeButton" class="nav-button home-nav-button" type="button" onclick="showHome()">🏠 홈</button></li>
             <li><button id="main-menu-about" class="nav-button" type="button" data-main-menu="about" aria-controls="about" onclick="showSection('about')">🌼 About Me</button></li>
