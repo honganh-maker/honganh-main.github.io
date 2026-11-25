@@ -860,6 +860,118 @@
             pointer-events: none;
         }
 
+    
+        /* Centered vintage scrapbook postcard for About Me */
+        #about.content-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: calc(100svh - 112px);
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        #about.content-section[hidden] { display: none !important; }
+        .about-postcard-wrap {
+            position: relative;
+            width: min(620px, 88vw);
+            margin: auto;
+            filter: drop-shadow(0 16px 25px rgba(68, 83, 100, .14));
+        }
+        .about-postcard {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 736 / 982;
+            overflow: hidden;
+            border-radius: 5px;
+            transform: rotate(-.35deg);
+        }
+        .about-postcard-paper {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            z-index: 0;
+        }
+        .postcard-copy {
+            position: absolute;
+            z-index: 1;
+            top: 13.5%;
+            right: 12%;
+            bottom: 16%;
+            left: 12%;
+            overflow-y: auto;
+            color: #4d5b65;
+            font: 400 clamp(12px, 1.12vw, 15px)/1.55 'Jua', 'Quicksand', sans-serif;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(132, 151, 162, .35) transparent;
+        }
+        .postcard-copy h2 {
+            margin: 0 0 10px;
+            color: #526779;
+            font: 400 clamp(21px, 2.1vw, 28px)/1.15 'Jua', sans-serif;
+            letter-spacing: .01em;
+        }
+        .postcard-copy h2 span { color: #c77d82; }
+        .postcard-copy p { margin: 0 0 .58em; }
+        .postcard-signoff {
+            margin-top: .4em !important;
+            color: #899ca4;
+            text-align: right;
+            font: 400 clamp(15px, 1.45vw, 19px)/1.2 'Dancing Script', 'Jua', cursive;
+        }
+        .postcard-signoff span { color: #c77d82; }
+        .postcard-stamp {
+            position: absolute;
+            z-index: 2;
+            top: 4.5%;
+            right: 6%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 12%;
+            aspect-ratio: 1;
+            border: 2px dashed rgba(174, 121, 111, .62);
+            border-radius: 8px;
+            background: rgba(255,255,255,.62);
+            color: #a97270;
+            transform: rotate(7deg);
+        }
+        .postcard-stamp span { font-size: clamp(18px, 2vw, 26px); line-height: 1; }
+        .postcard-stamp small { margin-top: 3px; text-align: center; font: 700 clamp(6px, .6vw, 8px)/1.15 'Quicksand', sans-serif; letter-spacing: .08em; }
+        .about-polaroid {
+            position: absolute;
+            z-index: 3;
+            top: 2%;
+            right: -3%;
+            width: 18%;
+            margin: 0;
+            padding: 6px 6px 17px;
+            background: #fffdf9;
+            box-shadow: 0 5px 14px rgba(64, 53, 49, .2);
+            transform: rotate(6deg);
+        }
+        .about-polaroid img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
+        .about-polaroid figcaption { margin-top: 4px; color: #8d7770; text-align: center; font: 400 11px/1 'Dancing Script', cursive; }
+        .postcard-rose { position: absolute; z-index: 2; left: -2%; bottom: 6%; font-size: 26px; transform: rotate(-13deg); }
+        @media (max-width: 760px) {
+            #about.content-section { min-height: calc(100svh - 120px); padding: 0 12px; }
+            .about-postcard-wrap { width: min(92vw, 540px); }
+            .postcard-copy { top: 13.5%; right: 11.5%; bottom: 16%; left: 11.5%; font-size: 12px; line-height: 1.4; }
+            .postcard-copy h2 { margin-bottom: 7px; font-size: 19px; }
+            .postcard-copy p { margin-bottom: .4em; }
+            .about-polaroid { top: -2%; right: 0; width: 16%; padding: 4px 4px 12px; }
+            .about-polaroid figcaption { font-size: 9px; }
+            .postcard-rose { left: 0; bottom: 6%; font-size: 20px; }
+        }
+        @media (max-width: 390px) {
+            .about-postcard-wrap { width: 94vw; }
+            .postcard-copy { font-size: 11px; line-height: 1.35; }
+            .postcard-copy h2 { font-size: 17px; }
+        }
+
     </style>
 </head>
 <body class="home-mode">
@@ -908,18 +1020,27 @@
 
     <main id="mainContent" class="portal-container" hidden>
 
-        <section id="about" class="content-section" hidden aria-labelledby="main-menu-about">
-            <div class="section-header">
-                <span class="section-eyebrow">A LITTLE INTRODUCTION</span>
-                <h2 class="section-title purple-gradient-text">🌼 About Me</h2>
-                <p class="section-subtitle">HongAnh의 작은 세상에 오신 걸 환영해요.</p>
-            </div>
-            <div class="card arcade-card">
-                <div class="card-top">
-                    <div class="game-icon" aria-hidden="true">🌷</div>
-                    <h3 class="game-title">안녕하세요, HongAnh입니다! ♡</h3>
-                    <p class="game-desc">이곳은 제가 모아 둔 음악과 게임, 여행과 음식 이야기를 담은 작은 홈페이지예요. 편하게 둘러보며 즐거운 시간 보내세요!</p>
-                </div>
+        <section id="about" class="content-section" hidden aria-labelledby="about-postcard-title">
+            <div class="about-postcard-wrap">
+                <article class="about-postcard" aria-label="HongAnh 자기소개 엽서">
+                    <img class="about-postcard-paper" src="assets/about-postcard-background.jpg" alt="" aria-hidden="true">
+                    <div class="postcard-stamp" aria-hidden="true"><span>🌹</span><small>HONGANH<br>KOREA</small></div>
+                    <div class="postcard-copy">
+                        <h2 id="about-postcard-title">안녕하세요, 홍아잉입니다! <span aria-hidden="true">♡</span></h2>
+                        <p>저는 베트남에서 온 조금은 내향적인 사람으로, 현재 한국에서 생활하고 공부하고 있어요.</p>
+                        <p>음악을 듣고, 영화를 보고, 사진을 찍는 것을 좋아해요. 특히 일상 속의 작고 평범한 순간들을 사진으로 기록하는 걸 좋아합니다.</p>
+                        <p>장미꽃과 필름 카메라, 조용한 카페, 새로운 곳을 여행하는 것도 제가 좋아하는 것들이에요.</p>
+                        <p>때로는 혼자만의 시간을 즐기고, 때로는 좋아하는 것들로 가득한 저만의 작은 세상에 빠져 있기도 해요.</p>
+                        <p>아직 많은 것을 배우고 경험하는 중이고, 이루고 싶은 꿈도 많아요.</p>
+                        <p>천천히 저만의 속도로 꿈을 향해 나아가고 있어요.</p>
+                        <p class="postcard-signoff">따뜻한 마음을 담아, 홍아잉 <span aria-hidden="true">♡</span></p>
+                    </div>
+                </article>
+                <figure class="about-polaroid">
+                    <img src="assets/home-polaroid-photo-01.jpg" alt="토마토를 안고 있는 토끼 그림">
+                    <figcaption>little moments ♡</figcaption>
+                </figure>
+                <span class="postcard-rose" aria-hidden="true">🌹</span>
             </div>
         </section>
 
