@@ -725,6 +725,89 @@
             body.home-mode .hero-banner { padding-inline: 11px; }
             .hero-menu.story-grid { gap: 6px; }
         }
+    
+        /* Centered three-line welcome over the full-screen supplied image */
+        body.home-mode .hero-banner {
+            height: 100svh;
+            min-height: 100svh;
+            padding: 82px 18px 20px;
+            background-image: url('assets/home-hero-background.jpg');
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        body.home-mode .hero-content {
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            left: 50%;
+            width: min(1000px, calc(100% - 32px));
+            margin: 0;
+            transform: translate(-50%, -50%);
+        }
+        body.home-mode .hero-title-card { margin: 0; }
+        body.home-mode .hero-kicker {
+            margin: 0 0 12px;
+            color: #111;
+            font: 400 clamp(15px, 1.6vw, 20px)/1.2 "Times New Roman", Times, serif;
+            letter-spacing: 0;
+            text-shadow: 0 1px 5px rgba(255,255,255,.7);
+        }
+        body.home-mode .hero-kicker::before,
+        body.home-mode .hero-kicker::after { content: none; }
+        body.home-mode .hero-title {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: .22em;
+            color: #17295d;
+            font: 700 clamp(32px, 7.2vw, 92px)/1.05 "Fredoka", "Jua", sans-serif;
+            letter-spacing: -.045em;
+            white-space: normal;
+            -webkit-text-fill-color: #17295d;
+            -webkit-text-stroke: 0;
+            text-shadow: 0 2px 0 rgba(255,255,255,.42), 0 5px 16px rgba(26,39,82,.12);
+        }
+        body.home-mode .hero-title span:first-child,
+        body.home-mode .hero-title span:last-child {
+            margin: 0;
+            color: #17295d;
+            -webkit-text-fill-color: #17295d;
+        }
+        body.home-mode .hero-subtitle {
+            margin: 15px 0 0;
+            color: #17295d;
+            font: 500 clamp(15px, 1.8vw, 21px)/1.3 "Quicksand", "Jua", sans-serif;
+            text-shadow: 0 1px 5px rgba(255,255,255,.72);
+        }
+        body.home-mode .hero-heart { color: #17295d; }
+        body.home-mode .explore-button { display: none; }
+        body.home-mode .home-stories {
+            position: absolute;
+            z-index: 2;
+            right: 18px;
+            bottom: 18px;
+            left: 18px;
+            width: auto;
+            margin: 0;
+        }
+        @media (max-height: 700px) {
+            body.home-mode .hero-menu.story-grid { gap: 8px; }
+            body.home-mode .memory-card { width: clamp(86px, 12vw, 138px); }
+        }
+        @media (max-width: 760px) {
+            body.home-mode .hero-banner { height: 100svh; min-height: 620px; padding: 78px 12px 12px; }
+            body.home-mode .hero-content { top: 42%; width: calc(100% - 24px); }
+            body.home-mode .hero-title { font-size: clamp(30px, 8vw, 62px); gap: .16em; }
+            body.home-mode .hero-subtitle { margin-top: 12px; }
+            body.home-mode .home-stories { right: 10px; bottom: 12px; left: 10px; }
+            body.home-mode .memory-card { width: min(100%, clamp(84px, 18vw, 132px)); }
+        }
+        @media (max-width: 390px) {
+            body.home-mode .hero-title { font-size: clamp(28px, 8vw, 34px); }
+        }
+
     </style>
 </head>
 <body class="home-mode">
@@ -754,7 +837,7 @@
     <header class="hero-banner" id="top">
         <div class="hero-content">
             <div class="hero-title-card">
-                <p class="hero-kicker">WELCOME</p>
+                <p class="hero-kicker">welcome to</p>
                 <h1 class="hero-title"><span>HongAnh</span><span>Homepage</span></h1>
                 <p class="hero-subtitle">Let’s explore together! <span class="hero-heart" aria-hidden="true">♡</span></p>
             </div>
