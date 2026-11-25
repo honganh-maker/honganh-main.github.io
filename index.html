@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HongAnh Homepage - 🌸 파스텔 연보라 아케이드 & 음악 포털</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Jua&family=Quicksand:wght@500;700&family=Pretendard:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Fredoka:wght@400;500;600;700&family=Jua&family=Quicksand:wght@500;700&family=Pretendard:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --pastel-purple: #b79ced;
@@ -576,6 +576,7 @@
         .guide-choice-card strong { margin: 10px 0; color: #7651c5; font-size: 22px; }
         .guide-choice-icon { font-size: 36px; }
         .home-nav-button { color: #7651c5; background: #f3edff; }
+        .hobby-card { width: 100%; padding: 26px; color: var(--text-main); font: inherit; text-align: left; cursor: pointer; }
         .site-nav[hidden] { display: none !important; }
         .portal-container { min-height: 48vh; max-width: 1320px; padding: 54px 24px 72px; gap: 32px; }
         .content-section { animation: sectionReveal .35s ease both; scroll-margin-top: 96px; }
@@ -662,9 +663,71 @@
             .hero-title { font-size: clamp(28px, 8vw, 38px); }
             .hero-subtitle { font-size: 15px; }
         }
+        /* Sunset storybook home, inspired by the supplied reference */
+        :root { --script-font: 'Dancing Script', 'Brush Script MT', cursive; --storybook-ink: #fffaf8; --storybook-pink: #ffd1e1; }
+        body.home-mode { background: #fff; }
+        body.home-mode .flower-bg { display: none; }
+        body.home-mode .site-nav { position: absolute; top: 0; left: 0; right: 0; display: flex; min-height: 82px; padding: 16px clamp(18px, 3vw, 48px); background: transparent; box-shadow: none; border: 0; }
+        body.home-mode .nav-logo { color: #554b77; background: none; -webkit-text-fill-color: #554b77; font: 700 28px/1 var(--script-font); letter-spacing: .01em; text-shadow: none; }
+        body.home-mode .nav-links { gap: clamp(4px, 1.4vw, 22px); }
+        body.home-mode .nav-button { gap: 8px; padding: 10px clamp(7px, 1vw, 16px); border: 0; border-radius: 0; color: #574f70; background: transparent; font: 500 clamp(12px, 1.28vw, 17px) 'Jua', 'Quicksand', sans-serif; text-shadow: none; }
+        body.home-mode .nav-button:hover, body.home-mode .nav-button:focus-visible { color: #8e6fc1; background: #f7f3fb; transform: translateY(-1px); }
+        body.home-mode .nav-button.is-active { color: #7651a5; background: transparent; box-shadow: inset 0 -2px #b89bd4; }
+        body.home-mode .home-nav-button { color: #7651a5; background: transparent; box-shadow: inset 0 -2px #b89bd4; }
+        body.home-mode .hero-banner { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: stretch; align-items: center; width: 100%; min-height: 100vh; min-height: 100svh; height: max(900px, 100svh); margin: 0; padding: 78px clamp(18px, 5vw, 82px) 30px; overflow: hidden; border: 0; border-radius: 0; background: url('assets/home-hero-background.jpg') center 58% / cover no-repeat; box-shadow: none; }
+        body.home-mode .hero-banner::after { content: ''; position: absolute; z-index: -1; inset: 0; background: linear-gradient(180deg, rgba(45,43,70,.26), rgba(45,43,70,.06) 46%, rgba(45,43,70,.22)); pointer-events: none; }
+        body.home-mode .hero-content { width: min(900px, 100%); margin: clamp(28px, 5vh, 60px) auto 0; }
+        body.home-mode .hero-title-card { width: 100%; margin: 0 auto 24px; padding: 0; text-align: center; }
+        body.home-mode .hero-title-cloud { display: none; }
+        body.home-mode .hero-kicker { margin: 0 0 13px; color: #8f7baa; font: 500 clamp(14px, 1.7vw, 21px)/1.2 'Jua', 'Quicksand', sans-serif; letter-spacing: .08em; text-shadow: none; }
+        body.home-mode .hero-kicker::before, body.home-mode .hero-kicker::after { content: '╲  ╱'; display: inline-block; margin: 0 17px; color: #b7a7c9; font: 15px 'Quicksand', sans-serif; vertical-align: middle; }
+        body.home-mode .hero-title { display: flex; flex-direction: column; align-items: center; margin: 0; color: #fff; font: 600 clamp(54px, 8.5vw, 118px)/.78 var(--script-font); letter-spacing: .005em; white-space: normal; -webkit-text-fill-color: currentColor; -webkit-text-stroke: 1px rgba(108,98,129,.48); text-shadow: 0 3px 15px rgba(52,40,68,.42); }
+        body.home-mode .hero-title span:first-child { color: #cbb8f0; -webkit-text-fill-color: #cbb8f0; }
+        body.home-mode .hero-title span:last-child { margin-left: clamp(30px, 7vw, 105px); color: #f3b6d2; -webkit-text-fill-color: #f3b6d2; }
+        body.home-mode .hero-subtitle { margin: 25px 0 0; color: #766c83; font: 500 clamp(17px, 2vw, 24px)/1.3 'Jua', 'Quicksand', sans-serif; text-shadow: none; }
+        body.home-mode .hero-heart { display: inline-block; margin-left: 5px; color: var(--storybook-pink); font-size: 1.25em; }
+        .explore-button { display: inline-flex; align-items: center; justify-content: center; gap: 11px; min-height: 62px; margin-top: 27px; padding: 13px 27px; border: 1px solid rgba(255,255,255,.88); border-radius: 999px; color: #4a4848; background: rgba(255,250,242,.96); box-shadow: 0 8px 22px rgba(80,68,103,.17); font: 700 18px 'Jua', 'Quicksand', sans-serif; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
+        .explore-button:hover, .explore-button:focus-visible { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(80,68,103,.23); outline: 2px solid rgba(255,255,255,.9); outline-offset: 3px; }
+        .explore-flower { font-size: 23px; }
+        .home-stories { position: relative; z-index: 1; width: min(1450px, 100%); margin: auto auto 0; }
+        .home-stories-title { margin: 0 0 11px; color: #766c83; font: 500 clamp(17px, 2vw, 23px) 'Jua', 'Quicksand', sans-serif; text-shadow: none; }
+        .home-stories-title span { color: #ffd1df; font-size: 1.2em; }
+        .hero-menu.story-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(8px, 2vw, 24px); align-items: end; width: min(1080px, 100%); margin: 0 auto; }
+        .memory-card { position: relative; display: block; justify-self: center; width: clamp(122px, 14vw, 184px); min-width: 0; padding: 0; border: 0; border-radius: 4px; color: #575453; background: transparent; box-shadow: none; cursor: pointer; transform: rotate(-1.8deg); transition: transform .22s ease, filter .22s ease; }
+        .memory-card:nth-child(2) { transform: rotate(1.2deg) translateY(-9px); }
+        .memory-card:nth-child(3) { transform: rotate(-.7deg) translateY(2px); }
+        .memory-card:hover, .memory-card:focus-visible { z-index: 3; transform: translateY(-9px) rotate(0); filter: drop-shadow(0 12px 10px rgba(70,58,79,.18)); outline: 2px solid #b79acb; outline-offset: 3px; }
+        .polaroid-frame { position: relative; display: block; width: 100%; aspect-ratio: 1; background: #fff url('assets/home-polaroid-frame.jpg') center / 100% 100% no-repeat; }
+        .memory-art { position: absolute; top: 10.6%; left: 16.7%; display: block; width: 66.6%; height: 66.7%; object-fit: contain; background: #fff; }
+        body.home-mode #siteFooter { display: none; }
+        @media (max-width: 760px) {
+            body.home-mode .site-nav { min-height: 70px; align-items: center; flex-direction: row; padding: 12px 13px; }
+            body.home-mode .nav-logo { font-size: 20px; }
+            body.home-mode .nav-links { justify-content: flex-end; gap: 2px; width: auto; }
+            body.home-mode .nav-button { flex-direction: column; gap: 2px; padding: 5px 7px; font-size: 10px; }
+            body.home-mode .hero-banner { height: auto; min-height: 100svh; padding: 90px 15px 24px; }
+            body.home-mode .hero-content { margin-top: 5vh; }
+            body.home-mode .hero-title { font-size: clamp(55px, 12vw, 88px); }
+            body.home-mode .hero-kicker::before, body.home-mode .hero-kicker::after { margin: 0 8px; }
+            .explore-button { min-height: 52px; margin-top: 21px; font-size: 16px; }
+            .home-stories { margin-top: 8vh; }
+            .hero-menu.story-grid { gap: 8px; }
+            .memory-card { width: min(100%, clamp(96px, 18vw, 140px)); }
+        }
+        @media (max-width: 520px) {
+            .hero-menu.story-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); width: min(440px, 100%); gap: 8px; }
+            .memory-card { width: min(100%, clamp(96px, 27vw, 126px)); }
+            .memory-card:nth-child(4) { grid-column: 2; }
+        }
+        @media (max-width: 390px) {
+            body.home-mode .nav-logo { font-size: 18px; }
+            body.home-mode .nav-button { padding: 5px 5px; font-size: 9px; }
+            body.home-mode .hero-banner { padding-inline: 11px; }
+            .hero-menu.story-grid { gap: 6px; }
+        }
     </style>
 </head>
-<body>
+<body class="home-mode">
 
     <!-- Floating Cute Flower Background Decor -->
     <div class="flower-bg">
@@ -676,36 +739,76 @@
         <span class="floating-flower" style="top: 92%; left: 80%;">🌼</span>
     </div>
 
-    <nav class="site-nav" aria-label="주 메뉴" hidden>
+    <nav class="site-nav" aria-label="주 메뉴">
         <a href="#top" class="nav-logo" aria-label="HongAnh Homepage 처음으로" onclick="showHome(); return false;">🌸 HongAnh</a>
         <ul class="nav-links">
             <li><button id="homeButton" class="nav-button home-nav-button" type="button" onclick="showHome()">🏠 홈</button></li>
-            <li><button id="main-menu-music" class="nav-button is-active" type="button" data-main-menu="music" aria-controls="music" aria-current="page" onclick="showSection('music')">🎵 나의 음악</button></li>
+            <li><button id="main-menu-about" class="nav-button" type="button" data-main-menu="about" aria-controls="about" onclick="showSection('about')">🌼 About Me</button></li>
+            <li><button id="main-menu-music" class="nav-button" type="button" data-main-menu="music" aria-controls="music" onclick="showSection('music')">🎵 나의 음악</button></li>
             <li><button id="main-menu-games" class="nav-button" type="button" data-main-menu="games" aria-controls="arcade" onclick="showSection('arcade')">🎮 재밌는 게임</button></li>
             <li><button id="main-menu-guide" class="nav-button" type="button" data-main-menu="guide" aria-controls="guide-menu" onclick="showSection('guide-menu')">🌷 여행 &amp; 음식</button></li>
+            <li><button id="main-menu-hobbies" class="nav-button" type="button" data-main-menu="hobbies" aria-controls="hobbies" onclick="showSection('hobbies')">⭐ Hobbies</button></li>
         </ul>
     </nav>
 
     <header class="hero-banner" id="top">
-        <div class="hero-doodles" aria-hidden="true"><span class="hero-doodle doodle-music">♫</span><span class="hero-doodle doodle-flower">🌼</span><span class="hero-doodle doodle-star">✦</span><span class="hero-doodle doodle-cloud">☁</span><span class="hero-doodle home-doodle-book">📗</span><span class="hero-doodle home-doodle-heart">♥</span></div>
-        <span class="hero-cloud hero-cloud-left" aria-hidden="true"></span>
-        <span class="hero-cloud hero-cloud-right" aria-hidden="true"></span>
         <div class="hero-content">
             <div class="hero-title-card">
-                <svg class="hero-title-cloud" viewBox="0 0 1000 340" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M 139 292 C 84 292 44 264 44 225 C 44 191 65 166 102 154 C 84 119 100 77 136 57 C 172 37 217 43 245 71 C 261 34 305 16 350 20 C 394 24 427 50 438 89 C 458 43 499 20 548 23 C 596 26 629 54 641 92 C 669 52 710 38 752 48 C 798 59 824 92 822 131 C 875 127 915 154 922 192 C 930 233 903 269 865 282 C 842 290 814 292 786 292 C 745 315 360 315 139 292 Z"/></svg>
-                <p class="hero-kicker">A little corner made with love</p>
-                <h1 class="hero-title">HongAnh Homepage</h1>
-                <p class="hero-subtitle">Let’s explore together!</p>
+                <p class="hero-kicker">WELCOME</p>
+                <h1 class="hero-title"><span>HongAnh</span><span>Homepage</span></h1>
+                <p class="hero-subtitle">Let’s explore together! <span class="hero-heart" aria-hidden="true">♡</span></p>
             </div>
-            <div class="hero-menu" aria-label="메인 메뉴">
-                <button class="hero-menu-button" type="button" onclick="showSection('music')" aria-controls="music"><span>나의 음악</span><span class="hero-menu-icon" aria-hidden="true">🎵</span></button>
-                <button class="hero-menu-button" type="button" onclick="showSection('arcade')" aria-controls="arcade"><span>재밌는 게임</span><span class="hero-menu-icon" aria-hidden="true">🎮</span></button>
-                <button class="hero-menu-button" type="button" onclick="showSection('guide-menu')" aria-controls="guide-menu"><span>여행 &amp; 음식</span><span class="hero-menu-icon" aria-hidden="true">🌷</span></button>
-            </div>
+            <button class="explore-button" type="button" onclick="document.getElementById('homeCards').scrollIntoView({behavior:'smooth',block:'center'})"><span class="explore-flower" aria-hidden="true">✿</span> Explore my world <span aria-hidden="true">→</span></button>
         </div>
+        <section class="home-stories" id="homeCards" aria-label="메인 이미지 메뉴">
+            <div class="hero-menu story-grid">
+                <button class="memory-card" type="button" onclick="showSection('about')" aria-controls="about" aria-label="About Me 열기" title="About Me"><span class="polaroid-frame"><img class="memory-art" src="assets/home-polaroid-photo-01.jpg" alt=""></span></button>
+                <button class="memory-card" type="button" onclick="showSection('music')" aria-controls="music" aria-label="나의 음악 열기" title="나의 음악"><span class="polaroid-frame"><img class="memory-art" src="assets/home-polaroid-photo-02.jpg" alt=""></span></button>
+                <button class="memory-card" type="button" onclick="showSection('arcade')" aria-controls="arcade" aria-label="재밌는 게임 열기" title="재밌는 게임"><span class="polaroid-frame"><img class="memory-art" src="assets/home-polaroid-photo-03.jpg" alt=""></span></button>
+                <button class="memory-card" type="button" onclick="showSection('guide-menu')" aria-controls="guide-menu" aria-label="여행과 음식 열기" title="여행 &amp; 음식"><span class="polaroid-frame"><img class="memory-art" src="assets/home-polaroid-photo-04.jpg" alt=""></span></button>
+                <button class="memory-card" type="button" onclick="showSection('hobbies')" aria-controls="hobbies" aria-label="Hobbies 열기" title="Hobbies"><span class="polaroid-frame"><img class="memory-art" src="assets/home-polaroid-photo-05.jpg" alt=""></span></button>
+            </div>
+        </section>
     </header>
 
     <main id="mainContent" class="portal-container" hidden>
+
+        <section id="about" class="content-section" hidden aria-labelledby="main-menu-about">
+            <div class="section-header">
+                <span class="section-eyebrow">A LITTLE INTRODUCTION</span>
+                <h2 class="section-title purple-gradient-text">🌼 About Me</h2>
+                <p class="section-subtitle">HongAnh의 작은 세상에 오신 걸 환영해요.</p>
+            </div>
+            <div class="card arcade-card">
+                <div class="card-top">
+                    <div class="game-icon" aria-hidden="true">🌷</div>
+                    <h3 class="game-title">안녕하세요, HongAnh입니다! ♡</h3>
+                    <p class="game-desc">이곳은 제가 모아 둔 음악과 게임, 여행과 음식 이야기를 담은 작은 홈페이지예요. 편하게 둘러보며 즐거운 시간 보내세요!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="hobbies" class="content-section" hidden aria-labelledby="main-menu-hobbies">
+            <div class="section-header">
+                <span class="section-eyebrow">THINGS I ENJOY</span>
+                <h2 class="section-title purple-gradient-text">⭐ Hobbies</h2>
+                <p class="section-subtitle">제가 모아 둔 이야기와 함께 작은 즐거움을 만나 보세요.</p>
+            </div>
+            <div class="grid">
+                <button class="card arcade-card hobby-card" type="button" onclick="showSection('music')">
+                    <div class="card-top"><div class="game-icon" aria-hidden="true">🎵</div><h3 class="game-title">음악 만들고 듣기</h3><p class="game-desc">Suno에서 만든 노래들을 모아 두었어요.</p></div>
+                    <span class="play-arrow">음악 보러 가기 →</span>
+                </button>
+                <button class="card arcade-card hobby-card" type="button" onclick="showSection('arcade')">
+                    <div class="card-top"><div class="game-icon" aria-hidden="true">🎮</div><h3 class="game-title">게임 즐기기</h3><p class="game-desc">직접 만든 게임을 골라 플레이해 보세요.</p></div>
+                    <span class="play-arrow">게임 보러 가기 →</span>
+                </button>
+                <button class="card arcade-card hobby-card" type="button" onclick="showSection('guide-menu')">
+                    <div class="card-top"><div class="game-icon" aria-hidden="true">🌷</div><h3 class="game-title">여행과 음식 둘러보기</h3><p class="game-desc">서울 여행지와 한국 음식 이야기를 모았어요.</p></div>
+                    <span class="play-arrow">구경하러 가기 →</span>
+                </button>
+            </div>
+        </section>
         
         <!-- Section 0: Music Tracks & Suno Featured Tracks -->
         <section id="music" class="content-section" hidden aria-labelledby="main-menu-music">
@@ -996,11 +1099,12 @@
             document.getElementById('mainContent').hidden = false;
             document.querySelector('.site-nav').hidden = false;
             document.getElementById('siteFooter').hidden = false;
+            document.body.classList.remove('home-mode');
             document.body.classList.toggle('music-mode', sectionId === 'music');
             document.querySelectorAll('.content-section').forEach((item) => {
                 item.hidden = item.id !== sectionId;
             });
-            const activeMenu = sectionId === 'music' ? 'music' : sectionId === 'arcade' ? 'games' : 'guide';
+            const activeMenu = sectionId === 'about' ? 'about' : sectionId === 'hobbies' ? 'hobbies' : sectionId === 'music' ? 'music' : sectionId === 'arcade' ? 'games' : 'guide';
             document.querySelectorAll('[data-main-menu]').forEach((button) => {
                 const isActive = button.dataset.mainMenu === activeMenu;
                 button.classList.toggle('is-active', isActive);
@@ -1014,9 +1118,10 @@
             document.querySelectorAll('.content-section').forEach((section) => { section.hidden = true; });
             document.getElementById('top').hidden = false;
             document.getElementById('mainContent').hidden = true;
-            document.querySelector('.site-nav').hidden = true;
+            document.querySelector('.site-nav').hidden = false;
             document.getElementById('siteFooter').hidden = true;
             document.body.classList.remove('music-mode');
+            document.body.classList.add('home-mode');
             document.querySelectorAll('[data-main-menu]').forEach((button) => {
                 button.classList.remove('is-active');
                 button.removeAttribute('aria-current');
@@ -1349,7 +1454,6 @@
     </script>
 </body>
 </html>
-
 
 
 
